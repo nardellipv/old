@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Point;
+use App\Product;
 use App\User;
 use DB;
 use Charts;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function dashboard()
     {
         $users = User::all();
-        
+
         $sells = Point::with(['product'])
             ->select("*", DB::raw("count(*) as product_count"))
             ->whereMonth('created_at', date('m'))
@@ -38,8 +40,19 @@ class DashboardController extends Controller
             ->setResponsive(true)
             ->groupByDay();
 
+        return view('admin.indexAdmin', compact('users', 'sells', 'sells_total', 'chart_totalSell', 'chart_lastMonthSell'));
+    }
 
-            // dd(date('Y'));
-        return view('admin.indexAdmin', compact('users', 'sells', 'sells_total', 'chart_totalSell','chart_lastMonthSell'));
+    public function clientDashboard()
+    {
+        $products = Product::all();
+        $user = Auth::user();
+
+        $product_exchanges = Point::with(['product'])
+            ->where('user_id', $user->id)
+            ->where('exchange', 'No')
+            ->get();
+
+        return view('adminClient.indexAdmin', compact('products', 'user', 'product_exchanges'));
     }
 }
