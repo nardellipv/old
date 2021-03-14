@@ -90,4 +90,11 @@ class ClientController extends Controller
 
         return view('admin.client.addService', compact('client', 'products', 'points'));
     }
+
+    public function showSendWsp($id)
+    {
+        $client = User::find($id);
+
+        return view('admin.client.sendWsp', compact('client'));
+    }
 }

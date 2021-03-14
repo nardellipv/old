@@ -9,4 +9,9 @@ class Point extends Model
     protected $fillable = [
         'user_id', 'product_id', 'point'
     ];
+
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

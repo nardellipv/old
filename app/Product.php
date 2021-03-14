@@ -10,5 +10,9 @@ class Product extends Model
         'name', 'price', 'offer', 'point', 'available'
     ];
 
+    public function Point()
+    {
+        return $this->hasMany(Point::class);
+    }
     
 }

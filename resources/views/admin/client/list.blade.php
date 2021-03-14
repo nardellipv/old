@@ -37,7 +37,9 @@
                                     <tbody>
                                         @foreach ($clients as $client)
                                             <tr>
-                                                <td><a href="{{ route('client.show', $client) }}">{{ $client->name }}</a></td>
+                                                <td><a
+                                                        href="{{ route('client.show', $client) }}">{{ $client->name }}</a>
+                                                </td>
                                                 <td>{{ $client->lastname }}</td>
                                                 <td>{{ $client->email }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($client->birthday)->format('d/m/Y') }}</td>
@@ -51,6 +53,10 @@
                                                     <a href="{{ route('client.delete', $client) }}" data-toggle="tooltip"
                                                         title="Eliminar" class="pd-setting-ed"><i class="fa fa-trash-o"
                                                             aria-hidden="true"></i></a>
+                                                    <a class="brd-rd3" href="https://web.whatsapp.com/send?phone=549{{ $client->phone }}&text=Hola%20{{ $client->name }},"
+                                                        target="_blank">
+                                                        <i class="fa fa-whatsapp"></i>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         @endforeach

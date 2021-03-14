@@ -35,10 +35,11 @@
     31 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
     32 => 'Intervention\\Image\\ImageServiceProvider',
     33 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    34 => 'App\\Providers\\AppServiceProvider',
-    35 => 'App\\Providers\\AuthServiceProvider',
-    36 => 'App\\Providers\\EventServiceProvider',
-    37 => 'App\\Providers\\RouteServiceProvider',
+    34 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
+    35 => 'App\\Providers\\AppServiceProvider',
+    36 => 'App\\Providers\\AuthServiceProvider',
+    37 => 'App\\Providers\\EventServiceProvider',
+    38 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -63,10 +64,11 @@
     18 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
     19 => 'Intervention\\Image\\ImageServiceProvider',
     20 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
-    21 => 'App\\Providers\\AppServiceProvider',
-    22 => 'App\\Providers\\AuthServiceProvider',
-    23 => 'App\\Providers\\EventServiceProvider',
-    24 => 'App\\Providers\\RouteServiceProvider',
+    21 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
+    22 => 'App\\Providers\\AppServiceProvider',
+    23 => 'App\\Providers\\AuthServiceProvider',
+    24 => 'App\\Providers\\EventServiceProvider',
+    25 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (

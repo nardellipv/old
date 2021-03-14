@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Point;
 use App\Product;
 use App\User;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PointController extends Controller
 {
@@ -28,10 +30,8 @@ class PointController extends Controller
             ]);
         }
 
-        $users = User::all();
-
         toastr()->success('Servicio al Cliente Cargado Correctamente', 'Servicio Cargado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
-        return view('admin.indexAdmin', compact('users'));
+        return back();
     }
 
     public function exchenge(Request $request, $id)
@@ -42,6 +42,14 @@ class PointController extends Controller
         $client = User::find($id);
         $client->total_points = $client->total_points - $totalService;
         $client->save();
+
+
+        Mail::send('emails.exchangePoints', ['client' => $client, 'totalService' => $totalService], function ($msj) use($client, $totalService) {
+            $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+            $msj->subject('Canje de puntos');
+            $msj->to($client->email, $client->name);
+        });
+
 
         toastr()->success('Servicio Canjeado al cliente Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
