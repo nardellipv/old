@@ -26,4 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/servicio/{id}/agregar', 'ClientController@addService')->name('client.addService');
     Route::post('/servicio/{id}/update', 'PointController@updateService')->name('client.updateService');
     Route::post('/servicio/{id}/canjear', 'PointController@exchenge')->name('client.exchenge');
+
+    Route::get('/categoria/', 'CategoryController@list')->name('category.list');
+    Route::post('/categoria/add', 'CategoryController@addCategory')->name('category.add');
+    Route::post('/categoria/{id}/update', 'CategoryController@updateCategory')->name('category.update');
+    Route::get('/categoria/{id}/delete', 'CategoryController@deleteCategory')->name('category.delete');
 });

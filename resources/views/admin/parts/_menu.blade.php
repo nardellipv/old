@@ -19,7 +19,7 @@
                                     aria-hidden="true"></i> <span class="mini-sub-pro">Productos</span></a></li>
                         <li><a title="Compose Mail" href="{{ route('client.list') }}"><i class="fa fa-users sub-icon-mg"
                                     aria-hidden="true"></i> <span class="mini-sub-pro">Agregar Cliente</span></a></li>
-                        <li><a title="View Mail" href="mailbox-view.html"><i class="fa fa-credit-card sub-icon-mg"
+                        <li><a title="View Mail" href="{{ route('category.list') }}"><i class="fa fa-credit-card sub-icon-mg"
                                     aria-hidden="true"></i> <span class="mini-sub-pro">Categoría</span></a></li>
                     </ul>
                 </li>
