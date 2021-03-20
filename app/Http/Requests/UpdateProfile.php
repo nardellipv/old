@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class UpdateProfile extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,6 @@ class ClientRequest extends FormRequest
             'lastname' => 'required | min:5',
             'birthday' => 'required',
             'phone' => 'required | numeric',
-            'category_id' => 'required',
         ];
     }
     public function messages()
@@ -41,7 +40,6 @@ class ClientRequest extends FormRequest
             'birthday.required' => 'La fecha de cumpleaños es requerida',
             'phone.required' => 'El teléfono es requerido',
             'phone.numeric' => 'El teléfono debe se numérico',
-            'category_id.required' => 'El campo categoria es requerido',
         ];
     }
 }

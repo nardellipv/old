@@ -32,21 +32,6 @@ class LoginController extends Controller
    */
   // protected $redirectTo = '/cliente/dashboard';
 
-  /*     public function redirectTo() {
-        $role = Auth::user()->type; 
-        switch ($role) {
-          case 'Admin':
-            return '/admin/dashboard';
-            break;
-          case 'Client':            
-            return '/cliente/dashboard';
-            break; 
-      
-          default:
-            return '/home'; 
-          break;
-        }
-      } */
 
   protected function authenticated(Request $request, $user)
   {

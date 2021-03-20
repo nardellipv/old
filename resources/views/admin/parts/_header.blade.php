@@ -99,7 +99,7 @@
                                                 </div>
                                             </div>
                                         </li>  --}}
-                                        <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                        {{-- <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
                                             <div role="menu" class="notification-author dropdown-menu animated zoomIn">
                                                 <div class="notification-single-top">
                                                     <h1>Notificaciones</h1>
@@ -119,7 +119,7 @@
                                                     </li>
                                                 </ul>                                                
                                             </div>
-                                        </li>
+                                        </li> --}}
                                         <li class="nav-item">
                                             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                     <i class="fa fa-user adminpro-user-rounded header-riht-inf" aria-hidden="true"></i>

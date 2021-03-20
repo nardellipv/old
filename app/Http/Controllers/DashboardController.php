@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
 use App\Point;
 use App\Product;
 use App\User;
@@ -49,7 +50,12 @@ class DashboardController extends Controller
     public function clientDashboard()
     {
         $products = Product::all();
+        
         $user = Auth::user();
+
+        $notifications = Notification::where('date', '>=', now())
+            ->get();
+
 
         $pointClient = Point::where('user_id', $user->id)
             ->first();
@@ -59,12 +65,11 @@ class DashboardController extends Controller
             ->where('exchange', 'No')
             ->get();
 
-        return view('adminClient.indexAdmin', compact('products', 'user', 'product_exchanges', 'pointClient'));
+        return view('adminClient.indexAdmin', compact('products', 'user', 'product_exchanges', 'pointClient', 'notifications'));
     }
 
     public function clientExchange($id)
     {
-        // dd('entro');
         $product = Product::find($id);
 
         $client = User::where('id', Auth::user()->id)
@@ -74,9 +79,8 @@ class DashboardController extends Controller
 
             toastr()->error('No tienes puntos suficientes para este producto', 'Servicio No Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
             return back();
-
         } else {
-            
+
             $client->total_points -= $product->point;
             $client->save();
 
@@ -88,7 +92,7 @@ class DashboardController extends Controller
 
 
             $qr = QrCode::size(100)
-                ->generate('/admin/showchangeQR/'. $point->id);
+                ->generate('/admin/showchangeQR/' . $point->id);
 
             Mail::send('emails.sendQr', ['client' => $client, 'qr' => $qr, 'product' => $product], function ($msj) use ($client, $product,  $qr) {
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');

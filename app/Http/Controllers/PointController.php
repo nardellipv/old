@@ -90,6 +90,15 @@ class PointController extends Controller
         return back();
     }
 
+    public function listExchange()
+    {
+        $list_exchange = Point::with(['product'])
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        return view('adminClient.exchange.list', compact('list_exchange'));
+    }
+
     public function clientExchange($id)
     {
         /*        $product = Product::find($id);

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\ClientRequest;
+use App\Http\Requests\UpdateProfile;
 use App\Point;
 use App\Product;
 use App\User;
-use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -38,7 +38,6 @@ class ClientController extends Controller
         $client->email = $request['email'];
         $client->type = 'Client';
         $client->birthday = $request['birthday'];
-        $client->dni = $request['dni'];
         $client->phone = $request['phone'];
         $client->total_points = $request['total_points'];
         $client->category_id = $request['category_id'];
@@ -61,7 +60,6 @@ class ClientController extends Controller
             'email' => $request['email'],
             'type' => 'Client',
             'birthday' => $request['birthday'],
-            'dni' => $request['dni'],
             'phone' => $request['phone'],
             'total_points' => $request['total_points'],
             'category_id' => '1',
@@ -96,5 +94,31 @@ class ClientController extends Controller
         $client = User::find($id);
 
         return view('admin.client.sendWsp', compact('client'));
+    }
+
+    public function showProfile($id)
+    {
+        $client = User::find($id);
+
+        return view('adminClient.profile.profile', compact('client'));
+    }
+
+    public function updateProfile(UpdateProfile $request, $id)
+    {
+        $client = User::find($id);
+        $client->name = $request['name'];
+        $client->lastname = $request['lastname'];
+        $client->email = $request['email'];
+        $client->birthday = $request['birthday'];
+        $client->phone = $request['phone'];
+        
+        if($request->password){
+            $client->password = bcrypt($request->password);
+        }
+        
+        $client->save();
+        
+        toastr()->success('Perfil Modificado Correctamente', 'Perfil Modificado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back();
     }
 }

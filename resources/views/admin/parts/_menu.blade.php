@@ -48,11 +48,11 @@
                             <span class="mini-click-non">Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap"></i>
+                        <a href="{{ route('client.showProfile', Auth::user()->id) }}" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap"></i>
                             <span class="mini-click-non">Perfil</span></a>
                     </li>
                     <li>
-                        <a href="" aria-expanded="false"><i class="fa big-icon fa-user icon-wrap"></i>
+                        <a href="{{ route('point.listExchengeClient') }}" aria-expanded="false"><i class="fa big-icon fa-qrcode icon-wrap"></i>
                             <span class="mini-click-non">Listado de Canjes</span></a>
                     </li>
                     <li>

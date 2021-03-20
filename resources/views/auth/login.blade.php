@@ -89,10 +89,10 @@
                         <form method="POST" action="{{ route('login') }}">
                         @csrf
                             <div class="form-group">
-                                <label class="control-label" for="dni">DNI</label>
-                                <input type="text" placeholder="12345678" title="DNI" required="" value="" name="dni" id="dni" class="form-control  @error('dni') is-invalid @enderror">
+                                <label class="control-label" for="phone">Teléfono</label>
+                                <input type="text" placeholder="12345678" title="phone" required="" value="" name="phone" id="phone" class="form-control  @error('phone') is-invalid @enderror">
                                 <span class="help-block small">Solo usaremos este dato para que puedas ingresar</span>
-                                @error('dni')
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

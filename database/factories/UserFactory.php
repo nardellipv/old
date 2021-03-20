@@ -24,7 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'type' =>  $faker->randomElement(['Admin', 'Client']),
         'birthday' =>  $faker->dateTimeBetween('1990-01-01', '2012-12-31'),
-        'dni' => $faker->numberBetween('10000000','99999999'),
         'phone' => $faker->numberBetween('100000','999999'),
         'total_points' => $faker->numberBetween('100','9999'),
         'photo' => $faker->imageUrl(),

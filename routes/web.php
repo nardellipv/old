@@ -19,8 +19,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('/cliente/dashboard', 'DashboardController@clientDashboard')->name('clientDashboard');
 
+    Route::get('/cliente/perfil/{id}', 'ClientController@showProfile')->name('client.showProfile');
+    Route::post('/cliente/perfil/{id}', 'ClientController@updateProfile')->name('client.updateProfile');
+
     Route::get('/cliente/ver/{id}', 'PointController@clientShowExchange')->name('point.showExchengeClient');
     Route::get('/cliente/canjear/{id}', 'DashboardController@clientExchange')->name('point.exchengeClient');
+
+    Route::get('/cliente/listado', 'PointController@listExchange')->name('point.listExchengeClient');
 });
 
 

@@ -47,12 +47,6 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
-
-                                                    <div class="form-group-inner">
-                                                        <label>DNI</label>
-                                                        <input type="text" name="dni" class="form-control" placeholder="DNI"
-                                                            value="{{ $client->dni }}" required />
-                                                    </div>
                                                     <div class="form-group-inner">
                                                         <label>Teléfono</label>
                                                         <input type="text" name="phone" class="form-control"
