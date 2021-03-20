@@ -1,7 +1,6 @@
 <nav id="sidebar" class="">
     <div class="sidebar-header">
-        <a href="index.html"><img class="main-logo" src="{{ asset('assets/img/logo/logo.png') }}" alt="" /></a>
-        <strong><img src="{{ asset('assets/img/logo/logosn.png') }}" alt="" /></strong>
+        
     </div>
     @if (Auth::user()->type == 'Admin')
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -27,6 +26,11 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="{{ route('notification.list') }}" aria-expanded="false"><i
+                                class="fa big-icon fa-bullhorn icon-wrap"></i>
+                            <span class="mini-click-non">Notificaciones</span></a>
+                    </li>
+                    <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             aria-expanded="false"><i class="fa big-icon fa-sign-out icon-wrap"></i>
@@ -36,6 +40,7 @@
                         @csrf
                     </form>
                 </ul>
+                
             </nav>
         </div>
     @else

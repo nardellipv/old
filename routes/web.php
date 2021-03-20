@@ -58,5 +58,9 @@ Route::middleware(['auth','UserType'])->group(function () {
 
     Route::get('/admin/showchangeQR/{id}', 'PointController@showChangeQr')->name('point.showChangeQr');
     Route::get('/admin/changeQR/{id}', 'PointController@ChangeQr')->name('point.ChangeQr');
+
+    Route::get('/admin/notificaciones', 'NotificationController@listNotification')->name('notification.list');
+    Route::post('/admin/crear', 'NotificationController@createNotification')->name('notification.create');
+    Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');
 });
 

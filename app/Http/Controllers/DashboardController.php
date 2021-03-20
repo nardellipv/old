@@ -44,13 +44,24 @@ class DashboardController extends Controller
             ->setResponsive(true)
             ->groupByDay();
 
-        return view('admin.indexAdmin', compact('users', 'sells', 'sells_total', 'chart_totalSell', 'chart_lastMonthSell'));
+        $user_count = User::count();
+        
+        $month_sell = Point::join('products','products.id','points.product_id')
+        ->whereMonth('points.created_at', now('m'))
+        ->sum('products.price');
+        
+        $year_sell = Point::join('products','products.id','points.product_id')
+        ->whereYear('points.created_at', now('Y'))
+        ->sum('products.price');
+
+        return view('admin.indexAdmin', compact('users', 'sells', 'sells_total', 'chart_totalSell', 'chart_lastMonthSell',
+        'user_count','month_sell','year_sell'));
     }
 
     public function clientDashboard()
     {
         $products = Product::all();
-        
+
         $user = Auth::user();
 
         $notifications = Notification::where('date', '>=', now())
