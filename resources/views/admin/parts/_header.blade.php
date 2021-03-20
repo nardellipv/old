@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<div class="header-advance-area">
+<div class="header-advance-area" style="margin-top: 5%">
     <div class="header-top-area">
         <div class="container-fluid">
             <div class="row">

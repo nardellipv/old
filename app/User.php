@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function Point()
+    {
+        return $this->hasMany(Point::class);
+    }
 }

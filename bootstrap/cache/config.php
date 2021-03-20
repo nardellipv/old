@@ -39,11 +39,10 @@
       22 => 'Intervention\\Image\\ImageServiceProvider',
       23 => 'Yoeunes\\Toastr\\ToastrServiceProvider',
       24 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
-      25 => 'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider',
-      26 => 'App\\Providers\\AppServiceProvider',
-      27 => 'App\\Providers\\AuthServiceProvider',
-      28 => 'App\\Providers\\EventServiceProvider',
-      29 => 'App\\Providers\\RouteServiceProvider',
+      25 => 'App\\Providers\\AppServiceProvider',
+      26 => 'App\\Providers\\AuthServiceProvider',
+      27 => 'App\\Providers\\EventServiceProvider',
+      28 => 'App\\Providers\\RouteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -85,7 +84,6 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'Image' => 'Intervention\\Image\\Facades\\Image',
       'Charts' => 'ConsoleTVs\\Charts\\Charts',
-      'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
     ),
   ),
   'auth' => 

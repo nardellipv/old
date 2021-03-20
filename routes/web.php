@@ -20,13 +20,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cliente/dashboard', 'DashboardController@clientDashboard')->name('clientDashboard');
 
     Route::get('/cliente/ver/{id}', 'PointController@clientShowExchange')->name('point.showExchengeClient');
-    Route::get('/cliente/canjear/{id}', 'PointController@clientExchange')->name('point.exchengeClient');
+    Route::get('/cliente/canjear/{id}', 'DashboardController@clientExchange')->name('point.exchengeClient');
 });
 
 
 //admin
 Route::middleware(['auth','UserType'])->group(function () {
-    Route::get('admin/dashboard', 'DashboardController@dashboard')->name('dashboard');
+    Route::get('/admin/dashboard', 'DashboardController@dashboard')->name('dashboard');
     
     Route::get('/admin/prductos', 'ProductController@listProduct')->name('product.list');
     Route::get('/admin/prductos/{id}/show', 'ProductController@showProduct')->name('product.show');
@@ -50,5 +50,8 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::post('/admin/categoria/add', 'CategoryController@addCategory')->name('category.add');
     Route::post('/admin/categoria/{id}/update', 'CategoryController@updateCategory')->name('category.update');
     Route::get('/admin/categoria/{id}/delete', 'CategoryController@deleteCategory')->name('category.delete');
+
+    Route::get('/admin/showchangeQR/{id}', 'PointController@showChangeQr')->name('point.showChangeQr');
+    Route::get('/admin/changeQR/{id}', 'PointController@ChangeQr')->name('point.ChangeQr');
 });
 

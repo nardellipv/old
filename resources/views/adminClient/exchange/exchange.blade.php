@@ -17,21 +17,15 @@
                     <h4>Te queda un total de: {{ $client->total_points }}</h4>
                     <hr>
                     <div class="single-pro-price">
-                        <span class="single-regular">Puntos: {{ $product->point }}</span>
+                        <span class="single-regular">Puntos Canjeados: {{ $product->point }}</span>
                     </div>
                     
-                    <div class="color-quality-pro">                        
-                        <div class="clear"></div>
-                        <div class="single-pro-button">
-                            <button type="button" class="btn btn-custon-rounded-three btn-primary">Enviar QR a tu email</button>
-                            <a href="{{ route('point.exchengeClient', $product) }}" type="button" class="btn btn-custon-rounded-three btn-warning">Canjear Producto</a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+                    
                     <hr>
                     <div class="single-pro-cn">
                         <h3>Canjea tu Producto/Servicio</h3>
-                        <p>Puedes enviar el QR a tu email para que el barbero, escanee el producto/servicio cuando estes en <b>Old Barber Chair</b>. </p>
+                        <p>Por favor cuando estes en la barbería, mostra este QR al barbero que te atienda y el canjera tus puntos. </p>
+                        <p>Muchas gracias por confiar en <b>Old Barber Chair</b>
                     </div>
                 </div>
             </div>

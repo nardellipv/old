@@ -28,7 +28,7 @@ class CreatePointsTable extends Migration
                 ->onUpdate('cascade');
 
             $table->integer('point');
-            $table->enum('exchange',['Si','No']);
+            $table->enum('exchange',['Si','No'])->default('No');
             $table->date('date_exchange')->nullable();
 
             $table->timestamps();
