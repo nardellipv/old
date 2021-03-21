@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | jeweler - Material Admin Template</title>
+    <title>Ingresar Old Barber Chair</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
     <!-- Google Fonts
 		============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
@@ -62,16 +62,12 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
     <div class="color-line"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="back-link back-backend">
-                    <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
+                    <a href="{{ route('home') }}" class="btn btn-primary">Volver al sitio</a>
                 </div>
             </div>
         </div>
@@ -83,6 +79,7 @@
                 <div class="text-center m-b-md custom-login">
                     <h3>Ingresar a Old Barber Chair</h3>
                     <p>Ingresa y participa de los excelentes beneficios</p>
+                    <img src="{{ asset('assets/logo.png') }}" style="width: 20%; margin-bottom:4%">
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
@@ -103,7 +100,7 @@
                                 <input type="password" title="Contraseña" placeholder="******" required="" value="" name="password" id="password" class="form-control  @error('password') is-invalid @enderror">
                             </div>
                             <button class="btn btn-success btn-block loginbtn">Ingresar</button>
-                            <a class="btn btn-default btn-block" href="#">Registrarse</a>
+                            <a class="btn btn-default btn-block" href="{{ route('register') }}">Registrarse</a>
                         </form>
                     </div>
                 </div>

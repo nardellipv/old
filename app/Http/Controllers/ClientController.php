@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProfile;
 use App\Point;
 use App\Product;
 use App\User;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -53,7 +54,7 @@ class ClientController extends Controller
     }
 
     public function storeClient(ClientRequest $request)
-    {
+    {        
         User::create([
             'name' => $request['name'],
             'lastname' => $request['lastname'],
@@ -61,7 +62,7 @@ class ClientController extends Controller
             'type' => 'Client',
             'birthday' => $request['birthday'],
             'phone' => $request['phone'],
-            'total_points' => $request['total_points'],
+            'total_points' => 0,
             'category_id' => '1',
             'password' => bcrypt($request['phone']),
         ]);
@@ -120,5 +121,10 @@ class ClientController extends Controller
         
         toastr()->success('Perfil Modificado Correctamente', 'Perfil Modificado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
+    }
+
+    public function sendRegisterMail(Request $request)
+    {
+        dd($request->all());
     }
 }

@@ -12,5 +12,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'offer' => $faker->numberBetween($min = 100, $max = 2000),
         'point' => $faker->numberBetween($min = 100, $max = 9000),
         'available' => $faker->randomElement(['Y','N']),
+        'show' => $faker->randomElement(['Y','N']),
     ];
 });

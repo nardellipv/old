@@ -17,7 +17,8 @@ class DashboardController extends Controller
     public function dashboard()
     {
 
-        $users = User::all();
+        $users = User::where('type', 'Client')
+            ->get();
 
         $sells = Point::with(['product'])
             ->select("*", DB::raw("count(*) as product_count"))
@@ -44,18 +45,27 @@ class DashboardController extends Controller
             ->setResponsive(true)
             ->groupByDay();
 
-        $user_count = User::count();
-        
-        $month_sell = Point::join('products','products.id','points.product_id')
-        ->whereMonth('points.created_at', now('m'))
-        ->sum('products.price');
-        
-        $year_sell = Point::join('products','products.id','points.product_id')
-        ->whereYear('points.created_at', now('Y'))
-        ->sum('products.price');
+        $user_count = User::where('type', 'Client')
+            ->count();
 
-        return view('admin.indexAdmin', compact('users', 'sells', 'sells_total', 'chart_totalSell', 'chart_lastMonthSell',
-        'user_count','month_sell','year_sell'));
+        $month_sell = Point::join('products', 'products.id', 'points.product_id')
+            ->whereMonth('points.created_at', now('m'))
+            ->sum('products.price');
+
+        $year_sell = Point::join('products', 'products.id', 'points.product_id')
+            ->whereYear('points.created_at', now('Y'))
+            ->sum('products.price');
+
+        return view('admin.indexAdmin', compact(
+            'users',
+            'sells',
+            'sells_total',
+            'chart_totalSell',
+            'chart_lastMonthSell',
+            'user_count',
+            'month_sell',
+            'year_sell'
+        ));
     }
 
     public function clientDashboard()

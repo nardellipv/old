@@ -1,49 +1,158 @@
-@extends('layouts.app')
+<!doctype html>
+<html class="no-js" lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Registrarse Old Barber Chair</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+  ============================================ -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
+    <!-- Google Fonts
+  ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
+    <!-- Bootstrap CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <!-- Bootstrap CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+    <!-- owl.carousel CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.transitions.css') }}">
+    <!-- animate CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <!-- normalize CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
+    <!-- meanmenu icon CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/meanmenu.min.css') }}">
+    <!-- main CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <!-- morrisjs CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/morrisjs/morris.css') }}">
+    <!-- mCustomScrollbar CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
+    <!-- metisMenu CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/metisMenu/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/metisMenu/metisMenu-vertical.css') }}">
+    <!-- calendar CSS
+  ============================================ -->
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/calendar/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/calendar/fullcalendar.print.min.css') }}"> --}}
+    <!-- style CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+    <!-- responsive CSS
+  ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <!-- modernizr JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+</head>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<body>
+    <div class="color-line"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="back-link back-backend">
+                    <a href="{{ route('home') }}" class="btn btn-primary">Volver al sitio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="text-center m-b-md custom-login">
+                    <h3>Ingresar a Old Barber Chair</h3>
+                    <p>Ingresa y participa de los excelentes beneficios</p>
+                    <img src="{{ asset('assets/logo.png') }}" style="width: 20%; margin-bottom:4%">
+                </div>
+                <div class="hpanel">
+                    <div class="panel-body">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                            <div class="form-group">
+                                <label class="control-label" for="name">Nombre</label>
+                                <input type="text" placeholder="Ingresar Nombre" title="name" required="" value="{{ old('name') }}" autofocus
+                                    name="name" id="name" class="form-control  @error('name') is-invalid @enderror">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <div class="form-group">
+                                <label class="control-label" for="lastname">Apellido</label>
+                                <input type="text" placeholder="Ingresar Apellido" title="lastname"
+                                    value="{{ old('lastname') }}" required autocomplete="lastname" autofocus
+                                    name="lastname" id="lastname"
+                                    class="form-control  @error('lastname') is-invalid @enderror">
+                                @error('lastname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                            <div class="form-group">
+                                <label class="control-label" for="email">Email</label>
+                                <input type="email" placeholder="Ingresar Email" title="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus name="email"
+                                    id="email" class="form-control  @error('email') is-invalid @enderror">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <div class="form-group">
+                                <label class="control-label" for="phone">Teléfono</label>
+                                <input type="text" placeholder="12345678" title="phone" value="{{ old('phone') }}"
+                                    required autocomplete="lastname" autofocus name="phone" id="phone"
+                                    class="form-control  @error('phone') is-invalid @enderror">
+                                <span class="help-block small">Solo usaremos este dato para que puedas ingresar</span>
+                                @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <div class="form-group-inner">
+                                <label>Cumpleaños</label>
+                                <input type="date" name="birthday" class="form-control"
+                                    placeholder="Cumpleaños" value="{{ old('birthday') }}"
+                                    required autocomplete="birthday" autofocus />
+                                    @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label" for="password">Password</label>
+                                <input type="password" title="Contraseña" placeholder="******"
+                                    value="{{ old('password') }}" required autocomplete="password" autofocus
+                                    name="password" id="password"
+                                    class="form-control  @error('password') is-invalid @enderror">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -51,27 +160,83 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <div class="form-group">
+                                <label class="control-label" for="password">Confirmar Password</label>
+                                <input type="password" title="Contraseña" placeholder="******"
+                                    value="{{ old('password') }}" required autocomplete="password" autofocus
+                                    name="password_confirmation" id="password-confirm"
+                                    class="form-control  @error('password') is-invalid @enderror">
                             </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                            <button type="submit" class="btn btn-default btn-block"
+                                href="{{ route('register') }}">Registrarse</button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                <p>Copyright &copy; {{ date('Y') }} <a href="https://mikant.com.ar">MikAnt</a> All rights reserved.
+                </p>
             </div>
         </div>
     </div>
-</div>
-@endsection
+
+    <!-- jquery
+  ============================================ -->
+    <script src="{{ asset('assets/js/vendor/jquery-1.11.3.min.js') }}"></script>
+    <!-- bootstrap JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <!-- wow JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+    <!-- price-slider JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/jquery-price-slider.js') }}"></script>
+    <!-- meanmenu JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/jquery.meanmenu.js') }}"></script>
+    <!-- owl.carousel JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    <!-- sticky JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
+    <!-- scrollUp JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/jquery.scrollUp.min.js') }}"></script>
+    <!-- mCustomScrollbar JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scrollbar/mCustomScrollbar-active.js') }}"></script>
+    <!-- metisMenu JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/metisMenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/js/metisMenu/metisMenu-active.js') }}"></script>
+    <!-- morrisjs JS
+  ============================================ -->
+    {{-- <script src="{{ asset('assets/js/morrisjs/raphael-min.js') }}"></script>
+    <script src="{{ asset('assets/js/morrisjs/morris.js') }}"></script>
+    <script src="{{ asset('assets/js/morrisjs/morris-active.js') }}"></script>
+    <!-- morrisjs JS
+		============================================ -->
+    <script src="{{ asset('assets/js/sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sparkline/jquery.charts-sparkline.js') }}"></script> --}}
+    <!-- calendar JS
+  ============================================ -->
+    {{-- <script src="{{ asset('assets/js/calendar/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/calendar/fullcalendar-active.js') }}"></script> --}}
+    <!-- plugins JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/plugins.js') }}"></script>
+    <!-- main JS
+  ============================================ -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+</body>
+
+</html>

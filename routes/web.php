@@ -12,7 +12,7 @@ Route::get('/clear', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 
 //client
@@ -46,6 +46,7 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::view('/admin/cliente/nuevo', 'admin.client.add')->name('client.add');
     Route::post('/admin/cliente/add', 'ClientController@storeClient')->name('client.store');
     Route::get('/admin/cliente/{id}/delete', 'ClientController@delete')->name('client.delete');
+    Route::post('/admin/cliente/enviar-registracion', 'ClientController@sendRegisterMail')->name('client.sendRegisterMail');
 
     Route::get('/admin/servicio/{id}/agregar', 'ClientController@addService')->name('client.addService');
     Route::post('/admin/servicio/{id}/update', 'PointController@updateService')->name('client.updateService');
@@ -61,6 +62,6 @@ Route::middleware(['auth','UserType'])->group(function () {
 
     Route::get('/admin/notificaciones', 'NotificationController@listNotification')->name('notification.list');
     Route::post('/admin/crear', 'NotificationController@createNotification')->name('notification.create');
-    Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');
+    Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');    
 });
 
