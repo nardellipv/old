@@ -64,7 +64,7 @@ class ClientController extends Controller
             'phone' => $request['phone'],
             'total_points' => 0,
             'category_id' => '1',
-            'password' => bcrypt($request['phone']),
+            'password' => bcrypt('barber'),
         ]);
 
         toastr()->success('Cliente Agregado Correctamente', 'Cliente Agregado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);

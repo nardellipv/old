@@ -16,6 +16,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="hpanel responsive-mg-b-30">
                             <div class="panel-body">
@@ -26,14 +27,11 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                 </div>
                                 <div class="m-t-xl">
-                                    <form method="post" action="{{ route('client.sendRegisterMail') }}">
-                                        @csrf
-                                        <div class="input-group">
-                                            <input type="text" name="phone" class="form-control" placeholder="Número Teléfono">
-                                            <span class="input-group-addon danger"><button type="submit"
-                                                    class="fa fa-paper-plane"></button></span>
-                                        </div>
-                                    </form>
+                                    <div class="input-group">
+                                        <input type="text" id="text" />
+                                        <button class="fa fa-whatsapp" type="button" id="btn" value="Submit"
+                                            onClick="javascript: window.open('https://web.whatsapp.com/send?phone=549' + document.getElementById('text').value + '&text=Hola, para darte de alta solo debes ingresar a https://oldbarberchair.com.ar/register');" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

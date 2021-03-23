@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email', 150)->unique()->nullable();
-            $table->enum('type', ['Admin', 'Client']);
+            $table->enum('type', ['Admin', 'Client'])->default('Client');
             $table->date('birthday');
             $table->string('phone');
             $table->string('total_points');

@@ -78,4 +78,36 @@ class PointController extends Controller
 
         return view('adminClient.exchange.list', compact('list_exchange'));
     }
+
+    public function exchenge(Request $request, $id)    
+    {
+        $client = User::find($id);
+
+        $client->total_points -= $request['points'];
+        $client->save();
+
+        toastr()->success('Producto Canjeado Correctamente', 'Producto Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function clientExchange($id)
+    {
+/*         $product = Product::find($id);
+        $client = User::where('id', Auth::user()->id)
+            ->first();
+        if ($client->total_points < $product->point) {
+            toastr()->error('No tienes puntos suficientes para este producto', 'Servicio No Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+            return back();
+        } else {
+            $client->total_points -= $product->point;
+            $client->save();
+            Point::create([
+                'user_id' => $client->id,
+                'product_id' => $product['id'],
+                'point' => $product->point,
+            ]);
+        }
+        toastr()->success('Servicio Canjeado Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back(); */
+    }
 }

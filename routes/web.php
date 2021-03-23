@@ -50,7 +50,7 @@ Route::middleware(['auth','UserType'])->group(function () {
 
     Route::get('/admin/servicio/{id}/agregar', 'ClientController@addService')->name('client.addService');
     Route::post('/admin/servicio/{id}/update', 'PointController@updateService')->name('client.updateService');
-    Route::post('/admin/servicio/{id}/canjear', 'PointController@exchenge')->name('client.exchenge');
+    Route::get('/admin/servicio/{id}/canjear/{points}', 'PointController@exchenge')->name('client.exchenge');
 
     Route::get('/admin/categoria/', 'CategoryController@list')->name('category.list');
     Route::post('/admin/categoria/add', 'CategoryController@addCategory')->name('category.add');
