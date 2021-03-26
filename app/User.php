@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lastname', 'email', 'type', 'birthday', 'phone', 'total_points', 'photo', 'category_id', 'password',
+        'name', 'lastname', 'email', 'type', 'birthday', 'phone', 'total_points', 'photo', 'password',
     ];
 
     /**
@@ -36,11 +36,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function Category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     public function Point()
     {

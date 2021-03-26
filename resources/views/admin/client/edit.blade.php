@@ -59,20 +59,6 @@
                                                             placeholder="Teléfono" value="{{ $client->total_points }}"
                                                             required />
                                                     </div>
-
-                                                    <div class="form-group-inner">
-                                                        <label>Categoría</label><br>
-                                                        <select required name="category_id"
-                                                            class="form-control pro-edt-select form-control-primary">
-                                                            <option value="{{ $client->category_id }}">
-                                                                {{ $client->category->name }}
-                                                            </option>
-                                                            <option disabled>-----------------------</option>
-                                                            @foreach ($categories as $category)
-                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

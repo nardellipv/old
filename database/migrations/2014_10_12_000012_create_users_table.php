@@ -25,12 +25,6 @@ class CreateUsersTable extends Migration
             $table->string('total_points');
             $table->string('photo');
 
-            //relaciones
-            $table->foreignId('category_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

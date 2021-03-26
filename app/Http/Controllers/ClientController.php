@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Http\Requests\ClientRequest;
 use App\Http\Requests\UpdateProfile;
 use App\Point;
@@ -14,8 +13,7 @@ class ClientController extends Controller
 {
     public function list()
     {
-        $clients = User::with(['category'])
-            ->where('type', 'Client')
+        $clients = User::where('type', 'Client')
             ->get();
 
         return view('admin.client.list', compact('clients'));
@@ -24,7 +22,6 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = User::find($id);
-        $categories = Category::all();
 
         return view('admin.client.edit', compact('client', 'categories'));
     }
@@ -41,11 +38,9 @@ class ClientController extends Controller
         $client->birthday = $request['birthday'];
         $client->phone = $request['phone'];
         $client->total_points = $request['total_points'];
-        $client->category_id = $request['category_id'];
         $client->save();
 
-        $clients = User::with(['category'])
-            ->where('type', 'Client')
+        $clients = User::where('type', 'Client')
             ->get();
 
         toastr()->success('Cliente Editado Correctamente', 'Cliente Editado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
@@ -70,7 +65,6 @@ class ClientController extends Controller
             'birthday' => $request['birthday'],
             'phone' => $request['phone'],
             'total_points' => 0,
-            'category_id' => '1',
             'password' => bcrypt('barber'),
         ]);
 

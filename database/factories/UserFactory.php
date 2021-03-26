@@ -27,7 +27,6 @@ $factory->define(User::class, function (Faker $faker) {
         'phone' => $faker->numberBetween('100000','999999'),
         'total_points' => $faker->numberBetween('100','9999'),
         'photo' => $faker->imageUrl(),
-        'category_id' => $faker->randomElement(['1', '2', '3']),
         'email_verified_at' => now(),
         'password' => bcrypt('123'),
         'remember_token' => Str::random(10),

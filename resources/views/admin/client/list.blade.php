@@ -30,7 +30,6 @@
                                             <th>Cumpleaños</th>
                                             <th>Teléfono</th>
                                             <th>Puntos</th>
-                                            <th>Categoría</th>
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
@@ -45,7 +44,6 @@
                                                 <td>{{ \Carbon\Carbon::parse($client->birthday)->format('d/m/Y') }}</td>
                                                 <td>{{ $client->phone }}</td>
                                                 <td>{{ $client->total_points }}</td>
-                                                <td>{{ $client->category->name }}</td>
                                                 <td>
                                                     <a href="{{ route('client.show', $client) }}" data-toggle="tooltip"
                                                         title="Editar"><i class="fa fa-pencil-square-o"

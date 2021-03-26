@@ -20,9 +20,6 @@
                             <li><a title="Compose Mail" href="{{ route('client.list') }}"><i
                                         class="fa fa-users sub-icon-mg" aria-hidden="true"></i> <span
                                         class="mini-sub-pro">Listado Cliente</span></a></li>
-                            <li><a title="View Mail" href="{{ route('category.list') }}"><i
-                                        class="fa fa-credit-card sub-icon-mg" aria-hidden="true"></i> <span
-                                        class="mini-sub-pro">Categoría</span></a></li>
                         </ul>
                     </li>
                     <li>

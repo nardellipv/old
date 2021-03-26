@@ -51,12 +51,6 @@
                                                         <input type="text" name="phone" class="form-control"
                                                             placeholder="Teléfono" value="{{ old('phone') }}" required />
                                                     </div>
-
-                                                    <div class="form-group-inner">
-                                                        <label>Cateogría</label><br>
-                                                        <input type="text" name="category_id" class="form-control"
-                                                            placeholder="Cateogría" value="Gold" readonly />
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
