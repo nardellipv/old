@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
             'name' => 'required | min:5',
             'price' => 'required | numeric',
             'point' => 'required | numeric',
-            'available' => 'required',
+            'point_changed' => 'required | numeric',
         ];
     }
     public function messages()
@@ -39,7 +39,8 @@ class ProductRequest extends FormRequest
             'price.numeric' => 'El precio debe ser un número',
             'point.required' => 'Los puntos son requerido',
             'point.numeric' => 'Los puntos deben ser numéricos',
-            'available.required' => 'El campo estado es requerido',
+            'point_changed.required' => 'Los puntos para canjear son requerido',
+            'point_changed.numeric' => 'Los puntos para canjear deben ser numéricos',
         ];
     }
 }

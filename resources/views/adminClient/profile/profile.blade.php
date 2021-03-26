@@ -40,7 +40,7 @@
                                                     <label>Cumpleaños</label>
                                                     <input type="date" name="birthday" class="form-control"
                                                         placeholder="Cumpleaños" value="{{ $client->birthday }}"
-                                                        required />
+                                                        required readonly />
                                                 </div>
 
                                             </div>

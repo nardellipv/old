@@ -62,9 +62,11 @@
                                                                 <select class="form-control dual_select" name="service[]"
                                                                     multiple required>
                                                                     @foreach ($products as $product)
-                                                                        <option value="{{ $product->id }}">
-                                                                            {{ $product->name }}
-                                                                        </option>
+                                                                        @if ($client->total_points >= $product->point_changed)
+                                                                            <option value="{{ $product->id }}">
+                                                                                {{ $product->name }}
+                                                                            </option>                                                                            
+                                                                        @endif
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -89,8 +91,6 @@
                                 </form>
                             </div>
                             <div class="product-tab-list tab-pane fade" id="exchange">
-                                {{-- <form method="post" action="{{ route('client.exchenge', $client) }}">
-                                    @csrf --}}
                                 <div class="row">
                                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                         <div class="sparkline8-hd">
@@ -113,9 +113,9 @@
                                                             <tr>
                                                                 <td>
                                                                     <div class="i-checks pull-left">
-                                                                        @if ($client->total_points >= $product->point)
+                                                                        @if ($client->total_points >= $product->point_changed)
                                                                             <a
-                                                                                href="{{ route('client.exchenge', [$client, $product->point]) }}">
+                                                                                href="{{ route('client.exchenge', [$client, $product->point_changed]) }}">
                                                                                 <i class="fa fa-check fa-2x"
                                                                                     style="color:blue"></i>
                                                                             </a>
@@ -130,11 +130,11 @@
                                                                             class="text text-danger">{{ $product->name }}</span>
                                                                     </td>
                                                                     <td><span
-                                                                            class="text text-danger">{{ $product->point }}</span>
+                                                                            class="text text-danger">{{ $product->point_changed }}</span>
                                                                     </td>
                                                                 @else
                                                                     <td>{{ $product->name }}</td>
-                                                                    <td>{{ $product->point }}</td>
+                                                                    <td>{{ $product->point_changed }}</td>
                                                                 @endif
                                                             </tr>
                                                         @endforeach
@@ -144,19 +144,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
-                                                <button type="submit"
-                                                    class="btn btn-primary waves-effect waves-light m-r-10">Canjar
-                                                </button>
-                                                <a href="{{ route('dashboard') }}" type="button"
-                                                    class="btn btn-warning waves-effect waves-light">Volver
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>

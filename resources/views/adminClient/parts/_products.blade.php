@@ -13,12 +13,9 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td>{{ $product->name }}</td>
-                                <td>{{ $product->point }}</td>
+                                <td>{{ $product->point_changed }}</td>
                                 <td>
-                                    @if ($user->total_points >= $product->point)
-                                        {{-- <a href="{{ route('point.showExchengeClient', $product) }}"
-                                            data-toggle="tooltip" title="Canjear" class="pd-setting-ed"><i
-                                                class="fa fa-check-square-o" aria-hidden="true"></i></a> --}}
+                                    @if ($user->total_points >= $product->point_changed)
                                         <a href="{{ route('point.exchengeClient', $product) }}" type="button"
                                             class="btn btn-custon-four btn-primary btn-xs">Canjear</a>
                                     @else

@@ -29,7 +29,7 @@ class ProductController extends Controller
         $product->price = $request['price'];
         $product->offer = $request['offer'];
         $product->point = $request['point'];
-        $product->available = $request['available'];
+        $product->point_changed = $request['point_changed'];
         $product->save();
 
         $products = Product::all();
@@ -45,7 +45,7 @@ class ProductController extends Controller
             'price' => $request['price'],
             'offer' => $request['offer'],
             'point' => $request['point'],
-            'available' => $request['available'],
+            'point_changed' => $request['point_changed'],
         ]);
 
         toastr()->success('Producto Creado Correctamente', 'Producto Creado', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);

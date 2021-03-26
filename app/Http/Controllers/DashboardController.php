@@ -96,22 +96,22 @@ class DashboardController extends Controller
         $client = User::where('id', Auth::user()->id)
             ->first();
 
-        if ($client->total_points < $product->point) {
+        if ($client->total_points < $product->point_changed) {
 
             toastr()->error('No tienes puntos suficientes para este producto', 'Servicio No Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
             return back();
         } else {
 
-            $client->total_points -= $product->point;
+            $client->total_points -= $product->point_changed;
             $client->save();
 
             $point = Point::create([
                 'user_id' => $client->id,
                 'product_id' => $product['id'],
-                'point' => $product->point,
+                'point' => $product->point_changed,
             ]);
 
-             $qr_name = date('d-m-H:m:s') . '-' . $product->id .'.png';
+           /*   $qr_name = date('d-m-H:m:s') . '-' . $product->id .'.png';
 
             $qr = QrCode::size(100)
                 ->format('png')
@@ -121,7 +121,7 @@ class DashboardController extends Controller
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
                 $msj->subject('Canje de puntos');
                 $msj->to($client->email, $client->name);
-            });
+            }); */
         }
 
         toastr()->success('Servicio Canjeado Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);

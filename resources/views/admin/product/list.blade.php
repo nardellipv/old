@@ -16,7 +16,7 @@
                                 <th>Precio</th>
                                 <th>Oferta</th>
                                 <th>Puntos</th>
-                                <th>Estado</th>
+                                <th>Puntos a Canjear</th>
                                 <th>Acción</th>
                             </tr>
                             @foreach ($products as $product)
@@ -29,13 +29,7 @@
                                         <td><span class="text-danger font-bold">Sin Oferta</span></td>
                                     @endif
                                     <td>{{ $product->point }}</td>
-                                    <td>
-                                        @if ($product->available == 'Y')
-                                            <a href="" class="pd-setting">Activo</a>
-                                        @else
-                                            <a href="" class="ds-setting">Pausado</a>
-                                        @endif
-                                    </td>
+                                    <td>{{ $product->point_changed }}</td>
                                     <td>
                                         <a href="{{ route('product.show', $product) }}" data-toggle="tooltip"
                                             title="Editar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

@@ -10,8 +10,8 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
         'price' => $faker->numberBetween($min = 100, $max = 2000),
         'offer' => $faker->numberBetween($min = 100, $max = 2000),
-        'point' => $faker->numberBetween($min = 100, $max = 9000),
-        'available' => $faker->randomElement(['Y','N']),
+        'point' => $faker->numberBetween($min = 100, $max = 1000),
+        'point_changed' => $faker->numberBetween($min = 1000, $max = 3000),
         'show' => $faker->randomElement(['Y','N']),
     ];
 });

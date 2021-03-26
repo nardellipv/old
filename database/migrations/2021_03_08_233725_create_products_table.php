@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('offer')->nullable();
             $table->integer('point');
-            $table->enum('available', ['Y', 'N']);
+            $table->integer('point_changed');
             $table->enum('show', ['Y', 'N']);
 
             $table->timestamps();

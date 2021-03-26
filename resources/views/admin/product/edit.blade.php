@@ -46,14 +46,9 @@
                                                 </div>
 
                                                 <div class="form-group-inner">
-                                                    <label>Estado</label><br>
-                                                    <select required name="available"
-                                                        class="form-control pro-edt-select form-control-primary">
-                                                        <option value="{{ $product->available }}">{{ $product->available == 'Y' ? 'Activado' : 'Pausado' }}</option>
-                                                        <option disabled>-----------------------</option>
-                                                        <option value="Y">Activado</option>
-                                                        <option value="N">Pausado</option>
-                                                    </select>
+                                                    <label>Puntos para canjear</label>
+                                                    <input type="text" name="point_changed" class="form-control"
+                                                        placeholder="Puntos para canjear" value="{{ $product->point_changed }}" required />
                                                 </div>
                                             </div>
                                         </div>
