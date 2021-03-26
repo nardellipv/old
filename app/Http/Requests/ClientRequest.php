@@ -27,8 +27,7 @@ class ClientRequest extends FormRequest
             'name' => 'required | min:3',
             'lastname' => 'required | min:3',
             'birthday' => 'required',
-            'phone' => 'required | numeric | unique:users',
-            'category_id' => 'required',
+            'phone' => 'required | numeric | unique:users,id'
         ];
     }
     public function messages()
@@ -42,7 +41,6 @@ class ClientRequest extends FormRequest
             'phone.required' => 'El teléfono es requerido',
             'phone.numeric' => 'El teléfono debe se numérico',
             'phone.unique' => 'El teléfono ya esta registrado',
-            'category_id.required' => 'El campo categoria es requerido',
         ];
     }
 }

@@ -27,7 +27,7 @@ class UpdateProfile extends FormRequest
             'name' => 'required | min:3',
             'lastname' => 'required | min:3',
             'birthday' => 'required',
-            'phone' => 'required | numeric',
+            'phone' => 'required | numeric | unique:users,id',
         ];
     }
     public function messages()
