@@ -51,7 +51,7 @@
                                                     <label>Teléfono</label>
                                                     <input type="text" name="phone" class="form-control"
                                                         placeholder="Teléfono" value="{{ $client->phone }}"
-                                                        required />
+                                                        required readonly />
                                                 </div>
                                                 <div class="form-group-inner">
                                                     <label>Total Puntos</label>
@@ -76,7 +76,7 @@
                                                 <button type="submit"
                                                     class="btn btn-primary waves-effect waves-light m-r-10">Actualizar
                                                 </button>
-                                                <a href="{{ route('client.list') }}" type="button"
+                                                <a href="{{ route('clientDashboard') }}" type="button"
                                                     class="btn btn-warning waves-effect waves-light">Volver
                                                 </a>
                                             </div>

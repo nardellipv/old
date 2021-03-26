@@ -6,8 +6,8 @@
     'debug' => true,
     'url' => 'http://localhost',
     'asset_url' => NULL,
-    'timezone' => 'UTC',
-    'locale' => 'en',
+    'timezone' => 'America/Argentina/Mendoza',
+    'locale' => 'es',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'key' => 'base64:vN1MMqOm2fF3tl0RIIZ8nGmpPkMhJaBaUkARQ9fdONg=',
@@ -601,6 +601,13 @@
       'key' => '',
       'secret' => '',
       'region' => 'us-east-1',
+    ),
+    'sendinblue' => 
+    array (
+      'v3' => 
+      array (
+        'key' => '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',
+      ),
     ),
   ),
   'session' => 

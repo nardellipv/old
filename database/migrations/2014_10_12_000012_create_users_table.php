@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 150)->unique()->nullable();
             $table->enum('type', ['Admin', 'Client'])->default('Client');
             $table->date('birthday');
-            $table->string('phone');
+            $table->string('phone')->unique();
             $table->string('total_points');
             $table->string('photo');
 

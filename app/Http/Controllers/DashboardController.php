@@ -111,11 +111,13 @@ class DashboardController extends Controller
                 'point' => $product->point,
             ]);
 
+             $qr_name = date('d-m-H:m:s') . '-' . $product->id .'.png';
 
             $qr = QrCode::size(100)
-                ->generate('/admin/showchangeQR/' . $point->id);
+                ->format('png')
+                ->generate('https://oldbarberchair.com.ar/admin/showchangeQR/' . $point->id, 'users/' . $client->phone . '/' . $qr_name);
 
-            Mail::send('emails.sendQr', ['client' => $client, 'qr' => $qr, 'product' => $product], function ($msj) use ($client, $product,  $qr) {
+            Mail::send('emails.sendQr', ['client' => $client, 'qr_name' => $qr_name, 'product' => $product], function ($msj) use ($client, $product,  $qr) {
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
                 $msj->subject('Canje de puntos');
                 $msj->to($client->email, $client->name);

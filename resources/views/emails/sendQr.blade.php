@@ -24,7 +24,8 @@
         <tr>
             <td style="width: 100%; text-align: center;">
                 <p>&nbsp;</p>
-                <p>{!! $qr !!}</p>
+                {{--  <img src="https://oldbarberchair.com.ar/users/" . {{ $client->phone }} .'/'. {{ $qr_name }}>  --}}
+                <img src="{{ asset('users/'. $client->phone .'/'. $qr_name) }}">
                 <p>&nbsp;</p>
             </td>
         </tr>

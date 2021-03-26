@@ -54,7 +54,14 @@ class ClientController extends Controller
     }
 
     public function storeClient(ClientRequest $request)
-    {        
+    {
+
+        $path = 'users/' . $request['phone'];
+
+        if (!is_dir($path)) {
+            mkdir('users/' . $request['phone']);
+        }
+
         User::create([
             'name' => $request['name'],
             'lastname' => $request['lastname'],
@@ -112,13 +119,13 @@ class ClientController extends Controller
         $client->email = $request['email'];
         $client->birthday = $request['birthday'];
         $client->phone = $request['phone'];
-        
-        if($request->password){
+
+        if ($request->password) {
             $client->password = bcrypt($request->password);
         }
-        
+
         $client->save();
-        
+
         toastr()->success('Perfil Modificado Correctamente', 'Perfil Modificado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
     }

@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
             'name' => 'required | min:3',
             'lastname' => 'required | min:3',
             'birthday' => 'required',
-            'phone' => 'required | numeric',
+            'phone' => 'required | numeric | unique:users',
             'category_id' => 'required',
         ];
     }
@@ -41,6 +41,7 @@ class ClientRequest extends FormRequest
             'birthday.required' => 'La fecha de cumpleaños es requerida',
             'phone.required' => 'El teléfono es requerido',
             'phone.numeric' => 'El teléfono debe se numérico',
+            'phone.unique' => 'El teléfono ya esta registrado',
             'category_id.required' => 'El campo categoria es requerido',
         ];
     }

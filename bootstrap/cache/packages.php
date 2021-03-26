@@ -42,6 +42,13 @@
       'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
+  'juanparati/sendinblue' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Juanparati\\Sendinblue\\ServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
