@@ -18,7 +18,6 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.5",
-        "simplesoftwareio/simple-qrcode": "^4.2",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {

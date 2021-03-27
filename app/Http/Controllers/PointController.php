@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Point;
 use App\Product;
+use App\Sale;
 use App\User;
+use DB;
+use Charts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class PointController extends Controller
 {
@@ -23,10 +25,18 @@ class PointController extends Controller
             $user->total_points = $user->total_points + $total_point;
             $user->save();
 
+            $code = rand('100', '999');
+
             Point::create([
                 'user_id' => $id,
                 'product_id' => $product['id'],
                 'point' => $product->point,
+                'code' => $user->id . $code,
+            ]);
+
+            Sale::create([
+                'user_id' => $user->id,
+                'product_id' => $product->id,
             ]);
         }
 
@@ -34,41 +44,6 @@ class PointController extends Controller
         return back();
     }
 
-    public function clientShowExchange($id)
-    {
-        $product = Product::find($id);
-
-        $client = User::where('id', Auth::user()->id)
-            ->first();
-
-        $qr = QrCode::size(300)
-            ->generate('Valido por ' . $product->name);
-
-
-        return view('adminClient.exchange.exchange', compact('product', 'client', 'qr'));
-    }
-
-    public function showChangeQr($id)
-    {
-        $point = Point::find($id);
-
-        $product = Product::where('id', $point->product_id)
-            ->first();
-
-        return view('admin.qr.showQr', compact('point', 'product'));
-    }
-
-    public function ChangeQr($id)
-    {
-        $point = Point::find($id);
-
-        $point->exchange = 'Si';
-        $point->date_exchange = now();
-        $point->save();
-
-        toastr()->success('Producto Canjeado Correctamente', 'Producto Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
-        return back();
-    }
 
     public function listExchange()
     {
@@ -79,7 +54,7 @@ class PointController extends Controller
         return view('adminClient.exchange.list', compact('list_exchange'));
     }
 
-    public function exchenge(Request $request, $id)    
+    public function exchenge(Request $request, $id)
     {
         $client = User::find($id);
 
@@ -90,9 +65,87 @@ class PointController extends Controller
         return back();
     }
 
+    public function exchengeShowCode(Request $request)
+    {
+        $code = Point::where('code', $request['code'])
+            ->first();
+
+        if (!$code) {
+            toastr()->success('El código no existe', 'Código Erroneo', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+            return back();
+        }
+
+
+        return view('admin.code.showCodeProduct', compact('code'));
+    }
+
+    public function exchengeCode($code)
+    {
+        $codeChange = Point::where('code', $code)
+            ->first();
+
+        $codeChange->exchange = 'Si';
+        $codeChange->date_exchange = now();
+        $codeChange->save();
+
+        $users = User::where('type', 'Client')
+            ->get();
+
+        $sells = Point::with(['product'])
+            ->select("*", DB::raw("count(*) as product_count"))
+            ->whereMonth('created_at', date('m'))
+            ->groupBy('product_id')
+            ->get();
+
+        $sells_total = Point::with(['product'])
+            ->select("*", DB::raw("count(*) as product_count"))
+            ->groupBy('product_id')
+            ->paginate(10);
+
+        $chart_totalSell = Charts::database(Point::all(), 'bar', 'highcharts')
+            ->setTitle('Ventas Acumuladas')
+            ->setDateColumn('created_at')
+            ->setElementLabel("Cantidad de ventas")
+            ->setResponsive(true)
+            ->groupByMonth(date('Y'), true);
+
+        $chart_lastMonthSell = Charts::database(Point::all(), 'bar', 'highcharts')
+            ->setTitle('Ventas del Mes')
+            ->setDateColumn('created_at')
+            ->setElementLabel("Cantidad de ventas")
+            ->setResponsive(true)
+            ->groupByDay();
+
+        $user_count = User::where('type', 'Client')
+            ->count();
+
+        $month_sell = Point::join('products', 'products.id', 'points.product_id')
+            ->whereMonth('points.created_at', now('m'))
+            ->sum('products.price');
+
+        $year_sell = Point::join('products', 'products.id', 'points.product_id')
+            ->whereYear('points.created_at', now('Y'))
+            ->sum('products.price');
+
+        $products = Product::all();
+
+        toastr()->success('Producto Canjeado Correctamente', 'Producto Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return view('admin.indexAdmin', compact(
+            'users',
+            'sells',
+            'sells_total',
+            'chart_totalSell',
+            'chart_lastMonthSell',
+            'user_count',
+            'month_sell',
+            'year_sell',
+            'products'
+        ));
+    }
+
     public function clientExchange($id)
     {
-/*         $product = Product::find($id);
+        /*         $product = Product::find($id);
         $client = User::where('id', Auth::user()->id)
             ->first();
         if ($client->total_points < $product->point) {

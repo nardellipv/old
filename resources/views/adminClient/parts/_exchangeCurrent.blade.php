@@ -8,16 +8,13 @@
                         <tr>
                             <th>Producto</th>
                             <th>Puntos</th>
-                            <th>Visualizar QR</th>
+                            <th>Codigo</th>
                         </tr>
                         @forelse ($product_exchanges as $product_exchange)
                             <tr>
                                 <td>{{ $product_exchange->product->name }}</td>
                                 <td>{{ $product_exchange->point }}</td>
-                                <td>
-                                    <a href="{{ route('point.showExchengeClient', $product_exchange->product_id) }}"> <i
-                                            class="fa fa-qrcode fa-2x" aria-hidden="true"></i></a>
-                                </td>
+                                <td>{{ $product_exchange->code }}</td>
                             </tr>
                         @empty
                             <td>

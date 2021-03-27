@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Sale;
 
 class ProductController extends Controller
 {
@@ -58,6 +59,16 @@ class ProductController extends Controller
         $product->delete();
 
         toastr()->success('Producto Eliminado Correctamente', 'Producto Eliminado', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function sellProduct($id)
+    {
+        Sale::create([
+            'product_id' => $id,
+        ]);
+
+        toastr()->success('Producto Vendido Correctamente', 'Producto Vendido', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);
         return back();
     }
 }

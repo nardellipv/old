@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePointsTable extends Migration
+class CreateSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
 
             //relaciones
             $table->foreignId('user_id')
-                ->constrained()
+                ->nullable()
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
@@ -26,11 +26,6 @@ class CreatePointsTable extends Migration
                 ->constrained()
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-
-            $table->integer('point');
-            $table->integer('code');
-            $table->enum('exchange',['Si','No'])->default('No');
-            $table->date('date_exchange')->nullable();
 
             $table->timestamps();
         });
@@ -43,6 +38,6 @@ class CreatePointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('sales');
     }
 }

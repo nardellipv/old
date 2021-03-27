@@ -22,7 +22,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cliente/perfil/{id}', 'ClientController@showProfile')->name('client.showProfile');
     Route::post('/cliente/perfil/{id}', 'ClientController@updateProfile')->name('client.updateProfile');
 
-    Route::get('/cliente/ver/{id}', 'PointController@clientShowExchange')->name('point.showExchengeClient');
     Route::get('/cliente/canjear/{id}', 'DashboardController@clientExchange')->name('point.exchengeClient');
 
     Route::get('/cliente/listado', 'PointController@listExchange')->name('point.listExchengeClient');
@@ -40,6 +39,8 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::post('/admin/prductos/add', 'ProductController@storeProduct')->name('product.store');
     Route::get('/admin/prductos/{id}/delete', 'ProductController@deleteProduct')->name('product.delete');
 
+    Route::get('/admin/producto/venta/{id}', 'ProductController@sellProduct')->name('product.sell');
+
     Route::get('/admin/cliente', 'ClientController@list')->name('client.list');
     Route::get('/admin/cliente/{id}/show', 'ClientController@show')->name('client.show');
     Route::post('/admin/cliente/{id}/update', 'ClientController@updateClient')->name('client.update');
@@ -51,18 +52,10 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::get('/admin/servicio/{id}/agregar', 'ClientController@addService')->name('client.addService');
     Route::post('/admin/servicio/{id}/update', 'PointController@updateService')->name('client.updateService');
     Route::get('/admin/servicio/{id}/canjear/{points}', 'PointController@exchenge')->name('client.exchenge');
-
-    Route::get('/admin/categoria/', 'CategoryController@list')->name('category.list');
-    Route::post('/admin/categoria/add', 'CategoryController@addCategory')->name('category.add');
-    Route::post('/admin/categoria/{id}/update', 'CategoryController@updateCategory')->name('category.update');
-    Route::get('/admin/categoria/{id}/delete', 'CategoryController@deleteCategory')->name('category.delete');
-
-    Route::get('/admin/showchangeQR/{id}', 'PointController@showChangeQr')->name('point.showChangeQr');
-    Route::get('/admin/changeQR/{id}', 'PointController@ChangeQr')->name('point.ChangeQr');
+    Route::post('/admin/servicio/ver/ver-codigo', 'PointController@exchengeShowCode')->name('point.exchengeShowCode');
+    Route::post('/admin/servicio/canjear-codigo/{code}', 'PointController@exchengeCode')->name('point.exchengeCode');
 
     Route::get('/admin/notificaciones', 'NotificationController@listNotification')->name('notification.list');
     Route::post('/admin/crear', 'NotificationController@createNotification')->name('notification.create');
-    Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');    
+    Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');
 });
-
-// Route::get('/admin/showchangeQR/{id}', 'PointController@showChangeQr')->name('point.showChangeQr');

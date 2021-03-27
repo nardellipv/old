@@ -9,8 +9,6 @@ use App\User;
 use DB;
 use Charts;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class DashboardController extends Controller
 {
@@ -56,6 +54,8 @@ class DashboardController extends Controller
             ->whereYear('points.created_at', now('Y'))
             ->sum('products.price');
 
+        $products = Product::all();
+
         return view('admin.indexAdmin', compact(
             'users',
             'sells',
@@ -64,7 +64,8 @@ class DashboardController extends Controller
             'chart_lastMonthSell',
             'user_count',
             'month_sell',
-            'year_sell'
+            'year_sell',
+            'products'
         ));
     }
 
@@ -96,6 +97,8 @@ class DashboardController extends Controller
         $client = User::where('id', Auth::user()->id)
             ->first();
 
+        $code = rand('100', '999');
+
         if ($client->total_points < $product->point_changed) {
 
             toastr()->error('No tienes puntos suficientes para este producto', 'Servicio No Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
@@ -109,15 +112,11 @@ class DashboardController extends Controller
                 'user_id' => $client->id,
                 'product_id' => $product['id'],
                 'point' => $product->point_changed,
+                'code' => $client->id . $code,
             ]);
 
-           /*   $qr_name = date('d-m-H:m:s') . '-' . $product->id .'.png';
-
-            $qr = QrCode::size(100)
-                ->format('png')
-                ->generate('https://oldbarberchair.com.ar/admin/showchangeQR/' . $point->id, 'users/' . $client->phone . '/' . $qr_name);
-
-            Mail::send('emails.sendQr', ['client' => $client, 'qr_name' => $qr_name, 'product' => $product], function ($msj) use ($client, $product,  $qr) {
+            /*  
+            Mail::send('emails.sendQr', ['client' => $client, 'product' => $product], function ($msj) use ($client, $product) {
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
                 $msj->subject('Canje de puntos');
                 $msj->to($client->email, $client->name);
