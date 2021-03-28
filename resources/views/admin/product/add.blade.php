@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="single-product-tab-area mg-tb-15">
-        <!-- Single pro tab review Start-->
         <div class="single-pro-review-area">
             <div class="container-fluid">
                 <div class="row">

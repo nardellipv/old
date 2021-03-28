@@ -64,8 +64,11 @@ class ProductController extends Controller
 
     public function sellProduct($id)
     {
+        $product = Product::find($id);
+
         Sale::create([
             'product_id' => $id,
+            'price' => $product->price,
         ]);
 
         toastr()->success('Producto Vendido Correctamente', 'Producto Vendido', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);

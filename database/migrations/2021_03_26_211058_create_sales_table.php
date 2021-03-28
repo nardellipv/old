@@ -27,6 +27,8 @@ class CreateSalesTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
+            $table->integer('price');
+
             $table->timestamps();
         });
     }

@@ -37,6 +37,7 @@ class PointController extends Controller
             Sale::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
+                'price' => $product->price,
             ]);
         }
 

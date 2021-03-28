@@ -58,4 +58,7 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::get('/admin/notificaciones', 'NotificationController@listNotification')->name('notification.list');
     Route::post('/admin/crear', 'NotificationController@createNotification')->name('notification.create');
     Route::get('/admin/borrar/{id}', 'NotificationController@deleteNotification')->name('notification.delete');
+
+    Route::get('/admin/ventas', 'SaleController@saleList')->name('sale.list');
+    Route::get('/admin/ventas/detalle/{month}/{year}', 'SaleController@saleDetail')->name('sale.detail');
 });

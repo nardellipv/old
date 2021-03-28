@@ -28,6 +28,11 @@
                             <span class="mini-click-non">Notificaciones</span></a>
                     </li>
                     <li>
+                        <a href="{{ route('sale.list') }}" aria-expanded="false"><i
+                                class="fa big-icon fa-credit-card icon-wrap"></i>
+                            <span class="mini-click-non">Ventas</span></a>
+                    </li>
+                    <li>
                         <a href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                             aria-expanded="false"><i class="fa big-icon fa-sign-out icon-wrap"></i>
