@@ -10,7 +10,7 @@
                             @include('admin.alerts.error')
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active"><a href="#description"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                        Editar Producto</a></li>
+                                        Agregar Producto</a></li>
                             </ul>
                             <form method="post" action="{{ route('product.store') }}">
                                 @csrf

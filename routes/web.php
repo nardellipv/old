@@ -61,4 +61,6 @@ Route::middleware(['auth','UserType'])->group(function () {
 
     Route::get('/admin/ventas', 'SaleController@saleList')->name('sale.list');
     Route::get('/admin/ventas/detalle/{month}/{year}', 'SaleController@saleDetail')->name('sale.detail');
+    Route::get('/admin/agregar/ventas', 'SaleController@saleAdd')->name('sale.add');
+    Route::post('/admin/guardar/ventas', 'SaleController@saleStore')->name('sale.store');
 });

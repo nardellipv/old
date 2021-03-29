@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use App\Sale;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -38,9 +40,34 @@ class SaleController extends Controller
         $total_month = Sale::whereMonth('created_at', $month)
             ->whereYear('created_at', $year)
             ->sum('price');
-            
+
         $month_name = Carbon::createFromFormat('m', $month);
-        
+
         return view('admin.sale.detail', compact('sales_month', 'total_month', 'month_name'));
+    }
+
+    public function saleAdd()
+    {
+        $clients = User::all();
+
+        $products = Product::all();
+
+        return view('admin.sale.addSale', compact('clients', 'products'));
+    }
+
+    public function saleStore(Request $request)
+    {
+        $product = Product::where('id', $request['product_id'])
+            ->first();
+
+        Sale::create([
+            'user_id' => $request['user_id'],
+            'product_id' => $product->id,
+            'price' => $product->price,
+            'created_at' => $request['created_at'],
+        ]);
+
+        toastr()->success('Venta Cargada Correctamente', 'Venta Cargada', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back();
     }
 }

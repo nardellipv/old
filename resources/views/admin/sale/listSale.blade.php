@@ -10,6 +10,9 @@
                             <div class="alert-title">
                                 <h2>Listado Mensual de Ventas</h2>
                             </div>
+                            <div class="add-product">
+                                <a href="{{ route('sale.add') }}">Argegar Ventas</a>
+                            </div>
                             @foreach ($sales as $key => $sale)
                                 <div class="panel-group adminpro-custon-design" id="accordion">
                                     <div class="panel panel-default">

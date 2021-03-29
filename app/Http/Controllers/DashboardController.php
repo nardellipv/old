@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Notification;
 use App\Point;
 use App\Product;
+use App\Sale;
 use App\User;
 use DB;
 use Charts;
@@ -18,25 +19,25 @@ class DashboardController extends Controller
         $users = User::where('type', 'Client')
             ->get();
 
-        $sells = Point::with(['product'])
+        $sells = Sale::with(['product'])
             ->select("*", DB::raw("count(*) as product_count"))
             ->whereMonth('created_at', date('m'))
             ->groupBy('product_id')
             ->get();
 
-        $sells_total = Point::with(['product'])
+        $sells_total = Sale::with(['product'])
             ->select("*", DB::raw("count(*) as product_count"))
             ->groupBy('product_id')
             ->paginate(10);
 
-        $chart_totalSell = Charts::database(Point::all(), 'bar', 'highcharts')
+        $chart_totalSell = Charts::database(Sale::all(), 'bar', 'highcharts')
             ->setTitle('Ventas Acumuladas')
             ->setDateColumn('created_at')
             ->setElementLabel("Cantidad de ventas")
             ->setResponsive(true)
             ->groupByMonth(date('Y'), true);
 
-        $chart_lastMonthSell = Charts::database(Point::all(), 'bar', 'highcharts')
+        $chart_lastMonthSell = Charts::database(Sale::all(), 'bar', 'highcharts')
             ->setTitle('Ventas del Mes')
             ->setDateColumn('created_at')
             ->setElementLabel("Cantidad de ventas")
@@ -46,12 +47,12 @@ class DashboardController extends Controller
         $user_count = User::where('type', 'Client')
             ->count();
 
-        $month_sell = Point::join('products', 'products.id', 'points.product_id')
-            ->whereMonth('points.created_at', now('m'))
+        $month_sell = Sale::join('products', 'products.id', 'sales.product_id')
+            ->whereMonth('sales.created_at', now('m'))
             ->sum('products.price');
 
-        $year_sell = Point::join('products', 'products.id', 'points.product_id')
-            ->whereYear('points.created_at', now('Y'))
+        $year_sell = Sale::join('products', 'products.id', 'sales.product_id')
+            ->whereYear('sales.created_at', now('Y'))
             ->sum('products.price');
 
         $products = Product::all();
