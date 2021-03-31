@@ -44,5 +44,20 @@
             </div>
             <div class="clearfix"></div>
         </div>
+
+        <div class="stylegrid2">
+            <div class="col-md-6 stylegridtext">
+                <h3 style="margin-top: 10%">Estilos de Barbas</h3>
+                <span></span>
+                <p>Auténtico corte de barba clásico con tijeras, navaja y máquina con la correcta aplicación de técnicas
+                    clásicas de peluquería. Incluye el uso de productos para el cuidado de la barba y consejos.
+                </p>
+            </div>
+            <div class="col-md-6 stylegridimg">
+                <img src="{{ asset('assetsWeb/images/style4.jpg') }}" alt="">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
     </div>
 </div>

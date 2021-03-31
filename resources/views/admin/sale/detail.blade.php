@@ -30,6 +30,7 @@
                                                             <th>Producto</th>
                                                             <th>Fecha</th>
                                                             <th>Precio</th>
+                                                            <th>Acción</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -44,13 +45,24 @@
                                                                 <td>{{ \Carbon\Carbon::parse($sale_month->created_at)->format('d/m/Y') }}
                                                                 </td>
                                                                 <td>$ {{ $sale_month->price }}</td>
+                                                                <td>
+                                                                    <a href="{{ route('sale.show', $sale_month) }}"
+                                                                        data-toggle="tooltip" title="Editar"><i
+                                                                            class="fa fa-pencil-square-o"
+                                                                            aria-hidden="true"></i></a>
+                                                                    <a href="{{ route('sale.delete', $sale_month) }}"
+                                                                        data-toggle="tooltip" title="Eliminar"
+                                                                        class="pd-setting-ed"><i class="fa fa-trash-o"
+                                                                            aria-hidden="true"></i></a>
+                                                                </td>
                                                             </tr>
                                                         @endforeach
                                                         <tr>
                                                             <td>total</td>
                                                             <td></td>
                                                             <td></td>
-                                                            <td>$ {{ $total_month }}</td>
+                                                            <td><span class="text-danger">$ {{ $total_month }}</span></td>
+                                                            <td></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

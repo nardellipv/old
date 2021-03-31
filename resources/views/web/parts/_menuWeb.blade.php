@@ -26,7 +26,8 @@
                                 <li><a href="#gallery" class="scroll">Galería</a></li>
                                 {{-- <li><a href="#testimonials" class="scroll">Testimonials</a></li> --}}
                                 <li><a href="#contact" class="scroll">Contacto</a></li>
-                                <li><a href="{{ url('/login') }}">Ingresar</a></li>
+                                <li><a href="{{ url('/login') }}" style="color: red">Ingresar</a></li>
+                                <li><a class="facebook" href="https://www.instagram.com/old.barber.chair/" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
                             </ul>
                         </div><!-- /navbar-collapse -->
 

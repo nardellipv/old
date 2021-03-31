@@ -8,7 +8,6 @@ use App\Product;
 use App\Sale;
 use App\User;
 use DB;
-use Charts;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -30,30 +29,13 @@ class DashboardController extends Controller
             ->groupBy('product_id')
             ->paginate(10);
 
-        $chart_totalSell = Charts::database(Sale::all(), 'bar', 'highcharts')
-            ->setTitle('Ventas Acumuladas')
-            ->setDateColumn('created_at')
-            ->setElementLabel("Cantidad de ventas")
-            ->setResponsive(true)
-            ->groupByMonth(date('Y'), true);
-
-        $chart_lastMonthSell = Charts::database(Sale::all(), 'bar', 'highcharts')
-            ->setTitle('Ventas del Mes')
-            ->setDateColumn('created_at')
-            ->setElementLabel("Cantidad de ventas")
-            ->setResponsive(true)
-            ->groupByDay();
-
         $user_count = User::where('type', 'Client')
             ->count();
 
-        $month_sell = Sale::join('products', 'products.id', 'sales.product_id')
-            ->whereMonth('sales.created_at', now('m'))
-            ->sum('products.price');
+        $month_sell = Sale::whereMonth('created_at', date('m'))
+            ->sum('price');
 
-        $year_sell = Sale::join('products', 'products.id', 'sales.product_id')
-            ->whereYear('sales.created_at', now('Y'))
-            ->sum('products.price');
+        $year_sell = Sale::sum('price');
 
         $products = Product::all();
 
@@ -61,8 +43,6 @@ class DashboardController extends Controller
             'users',
             'sells',
             'sells_total',
-            'chart_totalSell',
-            'chart_lastMonthSell',
             'user_count',
             'month_sell',
             'year_sell',

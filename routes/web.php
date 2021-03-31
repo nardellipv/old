@@ -62,5 +62,8 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::get('/admin/ventas', 'SaleController@saleList')->name('sale.list');
     Route::get('/admin/ventas/detalle/{month}/{year}', 'SaleController@saleDetail')->name('sale.detail');
     Route::get('/admin/agregar/ventas', 'SaleController@saleAdd')->name('sale.add');
+    Route::get('/admin/ver/ventas/{id}', 'SaleController@saleShow')->name('sale.show');
+    Route::post('/admin/actualizar/ventas/{id}', 'SaleController@saleUpdate')->name('sale.update');
+    Route::get('/admin/borrar/ventas/{id}', 'SaleController@saleDelete')->name('sale.delete');
     Route::post('/admin/guardar/ventas', 'SaleController@saleStore')->name('sale.store');
 });

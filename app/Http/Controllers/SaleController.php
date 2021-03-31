@@ -8,6 +8,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use Charts;
 
 class SaleController extends Controller
 {
@@ -26,7 +27,21 @@ class SaleController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 
-        return view('admin.sale.listSale', compact('sales'));
+        $chart_totalSell = Charts::database(Sale::all(), 'bar', 'highcharts')
+            ->setTitle('Ventas Acumuladas')
+            ->setDateColumn('created_at')
+            ->setElementLabel("Cantidad de ventas")
+            ->setResponsive(true)
+            ->groupByMonth(date('Y'), true);
+
+        $chart_lastMonthSell = Charts::database(Sale::all(), 'bar', 'highcharts')
+            ->setTitle('Ventas del Mes')
+            ->setDateColumn('created_at')
+            ->setElementLabel("Cantidad de ventas")
+            ->setResponsive(true)
+            ->groupByDay();
+
+        return view('admin.sale.listSale', compact('sales', 'chart_totalSell', 'chart_lastMonthSell'));
     }
 
     public function saleDetail($month, $year)
@@ -68,6 +83,45 @@ class SaleController extends Controller
         ]);
 
         toastr()->success('Venta Cargada Correctamente', 'Venta Cargada', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function saleShow($id)
+    {
+        $sale = Sale::find($id);
+
+        $clients = User::all();
+
+        $products = Product::all();
+
+        return view('admin.sale.editSale', compact('sale', 'clients', 'products'));
+    }
+
+    public function saleUpdate(Request $request, $id)
+    {
+        // dd($request->all());
+        $product = Product::where('id', $request['product_id'])
+            ->first();
+
+        $sale = Sale::find($id);
+        $sale->user_id = $request['user_id'];
+        $sale->product_id = $product->id;
+        $sale->price = $product->price;
+        if ($request['created_at']) {
+            $sale->created_at = $request['created_at'];
+        }
+        $sale->save();
+
+        toastr()->success('Venta Modificada Correctamente', 'Venta Modificada', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function saleDelete($id)
+    {
+        $sale = Sale::find($id);
+        $sale->delete();
+
+        toastr()->success('Venta Eliminada Correctamente', 'Venta Eliminada', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
     }
 }

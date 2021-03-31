@@ -14,9 +14,9 @@
                             @include('admin.alerts.error')
                             <ul id="myTab3" class="tab-review-design">
                                 <li class="active"><a href="#description"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                        Agregar Venta</a></li>
+                                        Modificar Venta</a></li>
                             </ul>
-                            <form method="post" action="{{ route('sale.store') }}">
+                            <form method="post" action="{{ route('sale.update', $sale) }}">
                                 @csrf
                                 <div id="myTabContent" class="tab-content custom-product-edit">
                                     <div class="product-tab-list tab-pane fade active in" id="description">
@@ -28,7 +28,12 @@
                                                         <div class="chosen-select-single mg-b-20">
                                                             <select data-placeholder="Cliente" name="user_id"
                                                                 class="chosen-select" tabindex="-1">
-                                                                <option value="">Sin Cliente</option>
+                                                                @if (!$sale->user)
+                                                                    <option value="">Sin Cliente</option>
+                                                                @else
+                                                                    <option value="{{ $sale->user->id }}">
+                                                                        {{ $sale->user->name }}</option>
+                                                                @endif
                                                                 <option disabled>-------------------</option>
                                                                 @foreach ($clients as $client)
                                                                     <option value="{{ $client->id }}">
@@ -40,23 +45,25 @@
                                                     <div class="form-group-inner">
                                                         <label>Producto</label>
                                                         <select data-placeholder="Producto" name="product_id"
-                                                                class="chosen-select" tabindex="-1">
-                                                                <option value="">Elegir Producto</option>
-                                                                <option disabled>-------------------</option>
-                                                                @foreach ($products as $product)
-                                                                    <option value="{{ $product->id }}">
-                                                                        {{ $product->name }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            class="chosen-select" tabindex="-1">
+                                                            <option value="{{ $sale->product->id }}">
+                                                                {{ $sale->product->name }}</option>
+                                                            <option disabled>-------------------</option>
+                                                            @foreach ($products as $product)
+                                                                <option value="{{ $product->id }}">
+                                                                    {{ $product->name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="review-content-section">
                                                     <div class="form-group-inner">
-                                                        <label>Fecha de la venta</label>
+                                                        <label>Fecha de la venta
+                                                            <small>{{ \Carbon\Carbon::parse($sale->created_at)->format('d/m/Y') }}</small></label>
                                                         <input type="date" name="created_at" class="form-control"
-                                                            placeholder="fecha" required />
+                                                            placeholder="fecha" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +72,7 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="text-center mg-b-pro-edt custom-pro-edt-ds">
                                                     <button type="submit"
-                                                        class="btn btn-primary waves-effect waves-light m-r-10">Agregar
+                                                        class="btn btn-primary waves-effect waves-light m-r-10">Modificar
                                                     </button>
                                                     <a href="{{ route('sale.list') }}" type="button"
                                                         class="btn btn-warning waves-effect waves-light">Volver

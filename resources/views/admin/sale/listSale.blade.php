@@ -1,6 +1,7 @@
 @extends('layouts.mainAdmin')
 
 @section('content')
+@include('admin.parts._chart')
     <div class="adminpro-accordion-area mg-tb-15">
         <div class="container-fluid">
             <div class="row">

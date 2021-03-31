@@ -27,7 +27,7 @@ class ClientRequest extends FormRequest
             'name' => 'required | min:3',
             'lastname' => 'required | min:3',
             'birthday' => 'required',
-            'phone' => 'required | numeric | unique:users,id'
+            'phone' => 'required | numeric | unique:users,phone' 
         ];
     }
     public function messages()
