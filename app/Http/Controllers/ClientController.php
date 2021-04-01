@@ -8,7 +8,6 @@ use App\Point;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -24,7 +23,7 @@ class ClientController extends Controller
     {
         $client = User::find($id);
 
-        return view('admin.client.edit', compact('client', 'categories'));
+        return view('admin.client.edit', compact('client'));
     }
 
     public function updateClient(ClientRequest $request, $id)

@@ -1,7 +1,7 @@
 @extends('layouts.mainAdmin')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('assets/css/duallistbox/bootstrap-duallistbox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/touchspin/jquery.bootstrap-touchspin.min.css') }}">
 @endsection
 
 
@@ -53,28 +53,37 @@
 
                                             </div>
                                         </div>
+
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="sparkline10-graph">
-                                                <div class="basic-login-form-ad">
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <div class="dual-list-box-inner">
-                                                                <select class="form-control dual_select" name="service[]"
-                                                                    multiple required>
-                                                                    @foreach ($products as $product)
-                                                                        @if ($client->total_points >= $product->point_changed)
-                                                                            <option value="{{ $product->id }}">
-                                                                                {{ $product->name }}
-                                                                            </option>                                                                            
-                                                                        @endif
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
+                                            <div class="basic-login-inner inline-basic-form">
+                                                <div class="sparkline8-graph">
+                                                    <div class="static-table-list">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Producto</th>
+                                                                    <th>Cantidad</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($products as $product)
+                                                                    <tr>
+                                                                        <td>
+                                                                            {{ $product->name }}
+                                                                        </td>
+                                                                        <td>
+                                                                            <input class="touchspin1" type="text" value=""
+                                                                                name="service[{{ $product->id }}]" size="4" >
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -155,8 +164,7 @@
 
 
 @section('js')
-    <script src="{{ asset('assets/js/duallistbox/jquery.bootstrap-duallistbox.js') }}"></script>
-    <script src="{{ asset('assets/js/duallistbox/duallistbox.active.js') }}"></script>
-    <script src="{{ asset('assets/js/icheck/icheck.min.js') }}"></script>
-    <script src="{{ asset('assets/js/icheck/icheck-active.js') }}"></script>
+
+    <script src="{{ asset('assets/js/touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+    <script src="{{ asset('assets/js/touchspin/touchspin-active.js') }}"></script>
 @endsection

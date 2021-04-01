@@ -66,13 +66,18 @@
                                                         class="mini-sub-pro">Productos</span></a></li>
                                             <li><a title="Compose Mail" href="{{ route('client.list') }}"><i
                                                         class="fa fa-users sub-icon-mg" aria-hidden="true"></i> <span
-                                                        class="mini-sub-pro">Agregar Cliente</span></a></li>
+                                                        class="mini-sub-pro">Agregar Cliente</span></a></li>                                            
                                         </ul>
                                     </li>
                                     <li>
                                         <a href="{{ route('notification.list') }}" aria-expanded="false"><i
                                                 class="fa big-icon fa-bullhorn icon-wrap"></i>
                                             <span class="mini-click-non">Notificaciones</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('sale.list') }}" aria-expanded="false"><i
+                                                class="fa big-icon fa-credit-card icon-wrap"></i>
+                                            <span class="mini-click-non">Ventas</span></a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

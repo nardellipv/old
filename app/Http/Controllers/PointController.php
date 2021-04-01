@@ -18,28 +18,33 @@ class PointController extends Controller
     {
         $user = User::find($id);
 
-        for ($i = 0; $i < count($request['service']); $i++) {
-            $product = Product::where('id', $request->service[$i])
-                ->first();
+        $services = $request['service'];
 
-            $total_point = $product->point;
-            $user->total_points = $user->total_points + $total_point;
-            $user->save();
+        foreach ($services as $key => $service) {
+            if ($service) {
+                for ($i = 0; $i < $service; $i++) {
+                    $product = Product::where('id', $key)
+                        ->first();
+                    $total_point = $product->point;
+                    $user->total_points = $user->total_points + $total_point;
+                    $user->save();
 
-            $code = rand('100', '999');
+                    $code = rand('100', '999');
 
-            Point::create([
-                'user_id' => $id,
-                'product_id' => $product['id'],
-                'point' => $product->point,
-                'code' => $user->id . $code,
-            ]);
+                    Point::create([
+                        'user_id' => $id,
+                        'product_id' => $product['id'],
+                        'point' => $product->point,
+                        'code' => $user->id . $code,
+                    ]);
 
-            Sale::create([
-                'user_id' => $user->id,
-                'product_id' => $product->id,
-                'price' => $product->price,
-            ]);
+                    Sale::create([
+                        'user_id' => $user->id,
+                        'product_id' => $product->id,
+                        'price' => $product->price,
+                    ]);
+                }
+            }
         }
 
 

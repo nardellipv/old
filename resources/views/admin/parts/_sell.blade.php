@@ -15,8 +15,6 @@
                                     <tr>
                                         <th>Producto</th>
                                         <th>Cantidad</th>
-                                        <th>Subtotal</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -24,8 +22,6 @@
                                     <tr>
                                         <td>{{ $sell->product->name }}</td>
                                         <td>{{ $sell->product_count }}</td>
-                                        <td>${{ $sell->product->price }}</td>
-                                        <td>${{ $sell->product->price * $sell->product_count }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -48,8 +44,6 @@
                                     <tr>
                                         <th>Producto</th>
                                         <th>Cantidad</th>
-                                        <th>Subtotal</th>
-                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,8 +51,6 @@
                                     <tr>
                                         <td>{{ $sell_total->product->name }}</td>
                                         <td>{{ $sell_total->product_count }}</td>
-                                        <td>${{ $sell_total->product->price }}</td>
-                                        <td>${{ $sell_total->product->price * $sell_total->product_count }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
