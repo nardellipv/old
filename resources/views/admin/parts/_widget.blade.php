@@ -55,7 +55,7 @@
                         <div class="hpanel">
                             <div class="panel-body">
                                 <div class="stats-title pull-left">
-                                    <h4>Ingresos anual</h4>
+                                    <h4>Ingresos acumulado</h4>
                                 </div>
                                 <div class="stats-icon pull-right">
                                     <i class="fa fa-bar-chart" aria-hidden="true"></i>

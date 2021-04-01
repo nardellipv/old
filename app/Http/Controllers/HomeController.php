@@ -10,6 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::where('show', 'Y')
+            ->orderBy('price', 'DESC')
             ->get();
 
         return view('web.index', compact('products'));

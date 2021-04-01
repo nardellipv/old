@@ -14,20 +14,23 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('assets/logo.png') }}" style="width: 30%"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img
+                                    src="{{ asset('assets/logo.png') }}" style="width: 40%"></a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav ">
                                 <li><a class=" active" href="{{ route('home') }}">Home</a></li>
                                 {{-- <li><a href="#about" class="scroll">About</a></li> --}}
-                                <li><a href="#styles" class="scroll">Estilo</a></li>
+                                <li><a href="#styles" class="scroll">Servicios</a></li>
                                 <li><a href="#price" class="scroll">Precios</a></li>
                                 <li><a href="#gallery" class="scroll">Galería</a></li>
                                 {{-- <li><a href="#testimonials" class="scroll">Testimonials</a></li> --}}
                                 <li><a href="#contact" class="scroll">Contacto</a></li>
                                 <li><a href="{{ url('/login') }}" style="color: red">Ingresar</a></li>
-                                <li><a class="facebook" href="https://www.instagram.com/old.barber.chair/" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+                                <li><a class="facebook" href="https://www.instagram.com/old.barber.chair/"
+                                        target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+                                </li>
                             </ul>
                         </div><!-- /navbar-collapse -->
 
@@ -41,11 +44,11 @@
         <!-- w3-banner -->
         <div class="w3-banner">
             <div id="typer"></div>
-            <p>Lo invitamos a que venga y experimente nuestra atmósfera única, donde la amabilidad y el servicio de alta
-                calidad de los salones pasados ​​se combinan con la comodidad del mundo actual.
-
-                ¡Vení entonces! Precios competitivos, servicio amable y excelentes resultados, estará feliz de venir.
-                Queremos ser tu peluquero y redoblaremos nuestros esfuerzos para mostrarte nuestro agradecimiento.</p>
+            <p style="font-size: 17px;">Old Barber Chair, una barbería clásica, no sólo en estilo si no que en la correcta aplicación de las
+                técnicas de corte, donde nos enfocamos diariamente en entregar el mejor servicio a nuestros clientes,
+                brindándoles un lugar acogedor y servicio de calidad, con especial atención en los detalles, como
+                sabemos
+                hacerlo desde los inicios.</p>            
         </div>
 
         <div class="w3ls-phone">
