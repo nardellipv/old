@@ -42,6 +42,17 @@ class PointController extends Controller
             ]);
         }
 
+
+        $sum_points = Point::where('user_id', $id)
+            ->whereDay('created_at', now())
+            ->sum('point');
+
+        Mail::send('emails.addPoints', ['user' => $user, 'sum_points' => $sum_points], function ($msj) use ($sum_points, $user) {
+            $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+            $msj->subject('Suma de puntos a tu cuenta');
+            $msj->to($user->email, $user->name);
+        });
+
         toastr()->success('Servicio al Cliente Cargado Correctamente', 'Servicio Cargado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
     }
@@ -96,7 +107,7 @@ class PointController extends Controller
 
         Mail::send('emails.exchangePoints', ['codeChange' => $codeChange], function ($msj) use ($codeChange) {
             $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
-            $msj->subject('canje de puntos');
+            $msj->subject('Canje de puntos por productos o servicio');
             $msj->to($codeChange->user->email, $codeChange->user->name);
         });
 

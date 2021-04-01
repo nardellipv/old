@@ -100,7 +100,7 @@ class DashboardController extends Controller
 
             Mail::send('emails.sendCode', ['client' => $client, 'code' => $code, 'product' => $product], function ($msj) use ($client, $product, $code) {
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
-                $msj->subject('Canje de puntos');
+                $msj->subject('Canje de puntos por productos o servicios');
                 $msj->to($client->email, $client->name);
             });
         }

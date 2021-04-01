@@ -8,6 +8,7 @@ use App\Point;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -28,7 +29,6 @@ class ClientController extends Controller
 
     public function updateClient(ClientRequest $request, $id)
     {
-
         $client = User::find($id);
 
         $client->name = $request['name'];
@@ -44,7 +44,6 @@ class ClientController extends Controller
             ->get();
 
         toastr()->success('Cliente Editado Correctamente', 'Cliente Editado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
-
         return view('admin.client.list', compact('clients'));
     }
 
@@ -82,7 +81,7 @@ class ClientController extends Controller
     }
 
     public function addService($id)
-    {        
+    {
         $client = User::find($id);
         $products = Product::all();
         $points = Point::where('user_id', $id)
