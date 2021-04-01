@@ -30,7 +30,7 @@
                                     <div class="input-group">
                                         <input type="text" id="text" />
                                         <button class="fa fa-whatsapp" type="button" id="btn" value="Submit"
-                                            onClick="javascript: window.open('https://web.whatsapp.com/send?phone=549' + document.getElementById('text').value + '&text=Hola, para darte de alta solo debes ingresar a https://oldbarberchair.com.ar/register');" />
+                                            onClick="javascript: window.open('https://api.whatsapp.com/send?phone=549' + document.getElementById('text').value + '&text=Hola, para darte de alta solo debes ingresar a https://oldbarberchair.com.ar/register');" />
                                     </div>
                                 </div>
                             </div>
