@@ -10,6 +10,7 @@ use DB;
 use Charts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PointController extends Controller
 {
@@ -91,6 +92,14 @@ class PointController extends Controller
 
         $users = User::where('type', 'Client')
             ->get();
+
+
+        Mail::send('emails.exchangePoints', ['codeChange' => $codeChange], function ($msj) use ($codeChange) {
+            $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+            $msj->subject('canje de puntos');
+            $msj->to($codeChange->user->email, $codeChange->user->name);
+        });
+
 
         $sells = Point::with(['product'])
             ->select("*", DB::raw("count(*) as product_count"))

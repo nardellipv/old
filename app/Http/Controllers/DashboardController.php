@@ -9,6 +9,7 @@ use App\Sale;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -96,12 +97,12 @@ class DashboardController extends Controller
                 'code' => $client->id . $code,
             ]);
 
-            /*  
-            Mail::send('emails.sendQr', ['client' => $client, 'product' => $product], function ($msj) use ($client, $product) {
+
+            Mail::send('emails.sendCode', ['client' => $client, 'code' => $code, 'product' => $product], function ($msj) use ($client, $product, $code) {
                 $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
                 $msj->subject('Canje de puntos');
                 $msj->to($client->email, $client->name);
-            }); */
+            });
         }
 
         toastr()->success('Servicio Canjeado Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);

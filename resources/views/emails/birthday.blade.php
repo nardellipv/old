@@ -4,9 +4,9 @@
             <tr>
                 <td style="width: 100%;">
                     <p>&nbsp;</p>
-                    <p>Hola, <strong>{{ $codeChange->user->name }}</strong>!</p>
-                    <p>Acabas de canjear tus puntos {{ $codeChange->point }}</p>
-                    <p>Te quedan {{ $codeChange->user->total_points }}</p>
+                    <p>Hola, <strong>{{ $user->name }}</strong>!</p>
+                    <p>Tu cumple es el dia {{ \Carbon\Carbon::parse($user->birthday)->format('d/m/Y') }}</p>
+                    <p>&nbsp;</p>
                 </td>
             </tr>
             <tr>

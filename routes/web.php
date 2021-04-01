@@ -14,6 +14,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/job/birthday', 'JobController@birthday')->name('birthday');
 
 //client
 Route::middleware(['auth'])->group(function () {

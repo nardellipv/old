@@ -1,14 +1,4 @@
-<p><img src="https://logos-marcas.com/wp-content/uploads/2020/04/Twitter-Logo.png" alt="" width="114" height="114" />
-</p>
-<table style="width: 100%; border-collapse: collapse; background-color: #ee650c;" border="1">
-    <tbody>
-        <tr>
-            <td style="width: 100%;">
-                <h2 style="text-align: center;"><strong>Old Barber Chair</strong></h2>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<p><img src="https://oldbarberchair.com.ar/assets/logo.png" alt="" width="114" height="114" />
 <table style="width: 100%; border-collapse: collapse;" border="0">
     <tbody>
         <tr>
@@ -24,7 +14,7 @@
         <tr>
             <td style="width: 100%; text-align: center;">
                 <p>&nbsp;</p>
-                <p>el codigo es:</p>
+                <p>el codigo es: {{ $client->id . $code }}</p>
                 <p>&nbsp;</p>
             </td>
         </tr>
