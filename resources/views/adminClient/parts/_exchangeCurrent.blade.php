@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                    <h4>Productos Por Canjear <small>Mostrale el QR al barbero</small></h4>
+                    <h4>Productos Por Canjear <small>Mostrale el código al barbero</small></h4>
                     <table>
                         <tr>
                             <th>Producto</th>

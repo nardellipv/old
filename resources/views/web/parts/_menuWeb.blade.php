@@ -44,11 +44,11 @@
         <!-- w3-banner -->
         <div class="w3-banner">
             <div id="typer"></div>
-            <p style="font-size: 17px;">Old Barber Chair, una barbería clásica, no sólo en estilo si no que en la correcta aplicación de las
-                técnicas de corte, donde nos enfocamos diariamente en entregar el mejor servicio a nuestros clientes,
-                brindándoles un lugar acogedor y servicio de calidad, con especial atención en los detalles, como
-                sabemos
-                hacerlo desde los inicios.</p>            
+            <p style="font-size: 17px;">Old Barber Chair, una barbería clásica, tanto en estilo como en la
+                aplicación de técnicas de corte.</p>
+                <p>Nos enfocamos diariamente en entregar el mejor servicio a nuestros
+                clientes, brindándoles un lugar acogedor, con especial atención en
+                los detalles, como lo hacemos desde el comienzo.</p>            
         </div>
 
         <div class="w3ls-phone">

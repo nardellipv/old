@@ -99,7 +99,6 @@ class SaleController extends Controller
 
     public function saleUpdate(Request $request, $id)
     {
-        // dd($request->all());
         $product = Product::where('id', $request['product_id'])
             ->first();
 

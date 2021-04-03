@@ -29,15 +29,6 @@ class PointController extends Controller
                     $user->total_points = $user->total_points + $total_point;
                     $user->save();
 
-                    $code = rand('100', '999');
-
-                    Point::create([
-                        'user_id' => $id,
-                        'product_id' => $product['id'],
-                        'point' => $product->point,
-                        'code' => $user->id . $code,
-                    ]);
-
                     Sale::create([
                         'user_id' => $user->id,
                         'product_id' => $product->id,

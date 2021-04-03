@@ -6,11 +6,11 @@
                 <img src="{{ asset('assetsWeb/images/style1.png') }}" alt="">
             </div>
             <div class="col-md-6 stylegridtext">
-                <h3 style="margin-top: 5%">Corte de Cabello</h3>
+                <h3 style="margin-top: 5%">Cortes de Cabello</h3>
                 <span></span>
-                <p>Cortes clásicos a tijera o desvanecidos a máquina o navaja. Además, te asesoraran para seleccionar el
-                    corte de pelo que más se adecue a tu fisionomía y estilo.</p>
-                    <p>Clásico o moderno. Marcamos tendencia combinando máquinas y tijeras
+                <p>Cortes clásicos o modernos, a tijera, desvanecidos a máquina o
+                    navaja. Además, te asesoramos para elegir el corte que más se
+                    adecúe a tu fisionomía y estilo.
                 </p>
             </div>
             <div class="clearfix"></div>
@@ -20,8 +20,8 @@
             <div class="col-md-6 stylegridtext">
                 <h3 style="margin-top: 10%">Cortes de Barba</h3>
                 <span></span>
-                <p>Arreglo de barba y bigote, corte, Afeitado  o recorte, hidratación, limpieza de nuca, oídos y fosas nasales.</p>
-                <p>Clásico o moderno. Marcamos tendencia combinando máquinas, tijeras y navajas.</p>
+                <p>Afeitados, Recortes, Hidratación, Limpieza de nuca, oídos y fosas
+                    nasales.</p>
             </div>
             <div class="col-md-6 stylegridimg">
                 <img src="{{ asset('assetsWeb/images/style4.png') }}" alt="">
@@ -34,10 +34,12 @@
                 <img src="{{ asset('assetsWeb/images/style3.jpg') }}" alt="">
             </div>
             <div class="col-md-6 stylegridtext">
-                <h3 style="margin-top: 10%">Perfilado de cejas</h3>
+                <h3 style="margin-top: 10%">Perfilados de cejas</h3>
                 <span></span>
-                <p>Perfilado de cejas es clave para destacar los ojos y dar personalidad al rostro.</p>
-                <p>Nos encargamos de delinear y asesorar sobre el volumen adecuado.</p>
+                <p>El perfilado es clave para destacar los ojos y dar personalidad al
+                    rostro.</p>
+                <p>Nos encargamos de delinear y asesorar sobre el volumen
+                    adecuado.</p>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -47,7 +49,7 @@
                 <h3 style="margin-top: 10%">¿Queres tomar algo?</h3>
                 <span></span>
                 <p>Mientras esperas tu turno, refréscate con una cerveza artesanal “Coronel Dorrego”, o una gaseosa.</p>
-                <p>Para días más fríos disfruta  nuestro servicio de cafetería.</p>
+                <p>Para días más fríos disfruta nuestro servicio de cafetería.</p>
             </div>
             <div class="col-md-6 stylegridimg">
                 <img src="{{ asset('assetsWeb/images/style5.png') }}" alt="" style="margin-top: 13%;">
