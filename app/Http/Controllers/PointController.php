@@ -34,14 +34,12 @@ class PointController extends Controller
                         'product_id' => $product->id,
                         'price' => $product->price,
                     ]);
+
+                    $points[] = $total_point;
                 }
             }
         }
-
-
-        $sum_points = Point::where('user_id', $id)
-            ->whereDay('created_at', now())
-            ->sum('point');
+        $sum_points = array_sum($points);
 
         Mail::send('emails.addPoints', ['user' => $user, 'sum_points' => $sum_points], function ($msj) use ($sum_points, $user) {
             $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');

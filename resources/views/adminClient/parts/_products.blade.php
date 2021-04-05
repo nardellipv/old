@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-status-wrap">
-                    <h4>Listado de canjes: <small>{{ $user->total_points }}</small></h4>
+                    <h4>Listado de canjes <small>Total de puntos en tu cuenta: {{ $user->total_points }}</small></h4>
                     <table>
                         <tr>
                             <th>Producto</th>

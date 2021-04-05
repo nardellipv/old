@@ -9,7 +9,7 @@
                     <li>
                         <a href="{{ route('dashboard') }}" aria-expanded="false"><i
                                 class="fa big-icon fa-dashboard icon-wrap"></i>
-                            <span class="mini-click-non">Dashboard</span></a>
+                            <span class="mini-click-non">Escritorio</span></a>
                     </li>
                     <li>
                         <a class="has-arrow" href="mailbox.html" aria-expanded="false"><i
@@ -52,7 +52,7 @@
                     <li>
                         <a href="{{ route('clientDashboard') }}" aria-expanded="false"><i
                                 class="fa big-icon fa-dashboard icon-wrap"></i>
-                            <span class="mini-click-non">Dashboard</span></a>
+                            <span class="mini-click-non">Escritorio</span></a>
                     </li>
                     <li>
                         <a href="{{ route('client.showProfile', Auth::user()->id) }}" aria-expanded="false"><i

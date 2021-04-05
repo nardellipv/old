@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Productos Por Canjear <small>Mostrale el código al barbero</small></h4>
+                        <h4>Productos Canjeados</h4>
                         <table>
                             <tr>
                                 <th>Producto</th>
                                 <th>Puntos</th>
-                                <th>Visualizar QR</th>
+                                <th>Código</th>
                                 <th>Canjeado</th>
                             </tr>
                             @forelse ($list_exchange as $list)
