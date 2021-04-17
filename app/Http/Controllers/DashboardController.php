@@ -33,11 +33,6 @@ class DashboardController extends Controller
         $user_count = User::where('type', 'Client')
             ->count();
 
-        $month_sell = Sale::whereMonth('created_at', date('m'))
-            ->sum('price');
-
-        $year_sell = Sale::sum('price');
-
         $products = Product::all();
 
         return view('admin.indexAdmin', compact(
@@ -45,8 +40,6 @@ class DashboardController extends Controller
             'sells',
             'sells_total',
             'user_count',
-            'month_sell',
-            'year_sell',
             'products'
         ));
     }

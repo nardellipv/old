@@ -17,7 +17,7 @@
                                     <div class="sparkline13-list">
                                         <div class="sparkline13-hd">
                                             <div class="main-sparkline13-hd">
-                                                <h1>Ventas mes {{ \Carbon\Carbon::parse($month_name)->format('F') }}</h1>
+                                                <h1>Canjes acumuladas</h1>
                                             </div>
                                         </div>
                                         <div class="sparkline13-graph">
@@ -28,42 +28,22 @@
                                                         <tr>
                                                             <th>Cliente</th>
                                                             <th>Producto</th>
+                                                            <th>Canjeado?</th>
                                                             <th>Fecha</th>
-                                                            <th>Precio</th>
-                                                            <th>Acción</th>
+                                                            <th>Puntos</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($sales_month as $sale_month)
+                                                        @foreach ($exchanges as $exchange)
                                                             <tr>
-                                                                @if (empty($sale_month->user->name))
-                                                                    <td><span class="text-danger">Sin Cliente</span></td>
-                                                                @else
-                                                                    <td>{{ $sale_month->user->name }} {{ $sale_month->user->lastname }}</td>
-                                                                @endif
-                                                                <td>{{ $sale_month->product->name }}</td>
-                                                                <td>{{ \Carbon\Carbon::parse($sale_month->created_at)->format('d/m/Y') }}
+                                                                <td>{{ $exchange->user->name }} {{ $exchange->user->lastname }}</td>
+                                                                <td>{{ $exchange->product->name }}</td>
+                                                                <td>{{ $exchange->exchange }}</td>
+                                                                <td>{{ \Carbon\Carbon::parse($exchange->created_at)->format('d/m/Y') }}
                                                                 </td>
-                                                                <td>$ {{ $sale_month->price }}</td>
-                                                                <td>
-                                                                    <a href="{{ route('sale.show', $sale_month) }}"
-                                                                        data-toggle="tooltip" title="Editar"><i
-                                                                            class="fa fa-pencil-square-o"
-                                                                            aria-hidden="true"></i></a>
-                                                                    <a href="{{ route('sale.delete', $sale_month) }}"
-                                                                        data-toggle="tooltip" title="Eliminar"
-                                                                        class="pd-setting-ed"><i class="fa fa-trash-o"
-                                                                            aria-hidden="true"></i></a>
-                                                                </td>
+                                                                <td>{{ $exchange->point }}</td>
                                                             </tr>
                                                         @endforeach
-                                                        <tr>
-                                                            <td>total</td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td><span class="text-danger">$ {{ $total_month }}</span></td>
-                                                            <td></td>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>

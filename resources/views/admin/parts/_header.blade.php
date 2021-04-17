@@ -53,7 +53,7 @@
                                     <li>
                                         <a href="{{ route('dashboard') }}" aria-expanded="false"><i
                                                 class="fa big-icon fa-dashboard icon-wrap"></i>
-                                            <span class="mini-click-non">Dashboard</span></a>
+                                            <span class="mini-click-non">Escritorio</span></a>
                                     </li>
 
                                     <li>
@@ -66,7 +66,7 @@
                                                         class="mini-sub-pro">Productos</span></a></li>
                                             <li><a title="Compose Mail" href="{{ route('client.list') }}"><i
                                                         class="fa fa-users sub-icon-mg" aria-hidden="true"></i> <span
-                                                        class="mini-sub-pro">Agregar Cliente</span></a></li>                                            
+                                                        class="mini-sub-pro">Agregar Cliente</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -75,10 +75,47 @@
                                             <span class="mini-click-non">Notificaciones</span></a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('sale.list') }}" aria-expanded="false"><i
-                                                class="fa big-icon fa-credit-card icon-wrap"></i>
-                                            <span class="mini-click-non">Ventas</span></a>
+                                        <a class="has-arrow" href="#" aria-expanded="false"><i
+                                                class="fa big-icon fa-barcode icon-wrap"></i> <span
+                                                class="mini-click-non">Ventas</span></a>
+                                        <ul class="submenu-angle" aria-expanded="false">
+                                            <li>
+                                                <a href="{{ route('sale.add') }}" aria-expanded="false"><i
+                                                        class="fa big-icon fa-cart-plus icon-wrap"></i>
+                                                    <span class="mini-click-non">Agregar Ventas</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('sale.list') }}" aria-expanded="false"><i
+                                                        class="fa big-icon fa-credit-card icon-wrap"></i>
+                                                    <span class="mini-click-non">Listado Ventas</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('sale.accumulated') }}" aria-expanded="false"><i
+                                                        class="fa big-icon fa-balance-scale icon-wrap"></i>
+                                                    <span class="mini-click-non">Ventas Acumuladas</span></a>
+                                            </li>
+
+                                        </ul>
                                     </li>
+                                    <li>
+                                        <a class="has-arrow" href="#" aria-expanded="false"><i
+                                                class="fa big-icon fa-exchange icon-wrap"></i> <span
+                                                class="mini-click-non">Canjes</span></a>
+                                        <ul class="submenu-angle" aria-expanded="false">
+                                            <li>
+                                                <a href="{{ route('exchange.list') }}" aria-expanded="false"><i
+                                                        class="fa big-icon fa-qrcode icon-wrap"></i>
+                                                    <span class="mini-click-non">Listado de Canjes</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('exchange.accumulated') }}" aria-expanded="false"><i
+                                                        class="fa big-icon fa-arrows-alt icon-wrap"></i>
+                                                    <span class="mini-click-non">Canjes Acumulados</span></a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

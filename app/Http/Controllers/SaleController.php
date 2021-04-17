@@ -27,7 +27,8 @@ class SaleController extends Controller
             ->orderBy('created_at', 'DESC')
             ->paginate(12);
 
-        $chart_totalSell = Charts::database(Sale::all(), 'bar', 'highcharts')
+
+        $chart_totalSell = Charts::database(Sale::get(), 'bar', 'highcharts')
             ->setTitle('Ventas Acumuladas')
             ->setDateColumn('created_at')
             ->setElementLabel("Cantidad de ventas")
@@ -41,7 +42,12 @@ class SaleController extends Controller
             ->setResponsive(true)
             ->groupByDay();
 
-        return view('admin.sale.listSale', compact('sales', 'chart_totalSell', 'chart_lastMonthSell'));
+        $month_sell = Sale::whereMonth('created_at', date('m'))
+            ->sum('price');
+
+        $year_sell = Sale::sum('price');
+
+        return view('admin.sale.listSale', compact('sales', 'chart_totalSell', 'chart_lastMonthSell', 'month_sell', 'year_sell'));
     }
 
     public function saleDetail($month, $year)
@@ -122,5 +128,16 @@ class SaleController extends Controller
 
         toastr()->success('Venta Eliminada Correctamente', 'Venta Eliminada', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
+    }
+
+    public function saleAccumulated()
+    {
+        $sales = Sale::with(['product', 'user'])
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        $total_month = Sale::sum('price');
+
+        return view('admin.sale.accumulated', compact('sales','total_month'));
     }
 }

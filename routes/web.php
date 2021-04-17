@@ -67,4 +67,10 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::post('/admin/actualizar/ventas/{id}', 'SaleController@saleUpdate')->name('sale.update');
     Route::get('/admin/borrar/ventas/{id}', 'SaleController@saleDelete')->name('sale.delete');
     Route::post('/admin/guardar/ventas', 'SaleController@saleStore')->name('sale.store');
+
+    Route::get('/admin/listado/canjes', 'ExchangeController@listExchange')->name('exchange.list');
+    Route::get('/admin/acumulado/canjes', 'ExchangeController@accumulatedExchange')->name('exchange.accumulated');
+    Route::get('/admin/detalle/canjes/{month}/{year}', 'ExchangeController@detailExchange')->name('exchange.detail');
+
+    Route::get('/admin/ventas-acumuladas', 'SaleController@saleAccumulated')->name('sale.accumulated');
 });

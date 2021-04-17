@@ -14,6 +14,9 @@
                     </div>
                     <div class="sparkline13-graph">
                         <div class="datatable-dashv1-list custom-datatable-overright">
+                            <div class="add-product">
+                                <a href="{{ route('client.add') }}">Argegar Cliente</a>
+                            </div>
                             <table id="table" data-toggle="table" data-pagination="true" data-search="true">
                                 <thead>
                                     <tr>
