@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('point');
             $table->integer('point_changed');
             $table->enum('show', ['Y', 'N']);
+            $table->enum('exchange', ['Y', 'N']);
 
             $table->timestamps();
         });

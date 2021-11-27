@@ -82,7 +82,7 @@ class ClientController extends Controller
     public function addService($id)
     {
         $client = User::find($id);
-        $products = Product::all();
+        $products = Product::get();
         $points = Point::where('user_id', $id)
             ->get();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Point;
 use App\Product;
 use App\Sale;
+use App\SenderMail;
 use App\User;
 use DB;
 use Charts;
@@ -41,11 +42,18 @@ class PointController extends Controller
         }
         $sum_points = array_sum($points);
 
-        Mail::send('emails.addPoints', ['user' => $user, 'sum_points' => $sum_points], function ($msj) use ($sum_points, $user) {
-            $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
-            $msj->subject('Suma de puntos a tu cuenta');
-            $msj->to($user->email, $user->name);
-        });
+        $emailSend = SenderMail::where('id', 1)
+            ->first();
+
+        if ($emailSend->active == 'Y') {
+            if ($user->email != NULL) {
+                Mail::send('emails.addPoints', ['user' => $user, 'sum_points' => $sum_points], function ($msj) use ($sum_points, $user) {
+                    $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+                    $msj->subject('Suma de puntos a tu cuenta');
+                    $msj->to($user->email, $user->name);
+                });
+            }
+        }
 
         toastr()->success('Servicio al Cliente Cargado Correctamente', 'Servicio Cargado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
@@ -65,8 +73,28 @@ class PointController extends Controller
     {
         $client = User::find($id);
 
-        $client->total_points -= $request['points'];
-        $client->save();
+        if ($request['points'] != 0) {
+            $client->total_points -= $request['points'];
+            $client->save();
+
+            Point::create([
+                'user_id' => $client->id,
+                'product_id' => $request['product'],
+                'point' => $request['points'],
+                'code' => 0,
+                'exchange' => 'Si',
+                'date_exchange' => now(),
+            ]);
+        } else {
+            Point::create([
+                'user_id' => $client->id,
+                'product_id' => 12,
+                'point' => 0,
+                'code' => 0,
+                'exchange' => 'Si',
+                'date_exchange' => now(),
+            ]);
+        }
 
         toastr()->success('Producto Canjeado Correctamente', 'Producto Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
         return back();
@@ -98,12 +126,18 @@ class PointController extends Controller
         $users = User::where('type', 'Client')
             ->get();
 
+        $emailSend = SenderMail::where('id', 3)
+            ->first();
 
-        Mail::send('emails.exchangePoints', ['codeChange' => $codeChange], function ($msj) use ($codeChange) {
-            $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
-            $msj->subject('Canje de puntos por productos o servicio');
-            $msj->to($codeChange->user->email, $codeChange->user->name);
-        });
+        if ($emailSend->active == 'Y') {
+            if ($codeChange->user->email != NULL) {
+                Mail::send('emails.exchangePoints', ['codeChange' => $codeChange], function ($msj) use ($codeChange) {
+                    $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+                    $msj->subject('Canje de puntos por productos o servicio');
+                    $msj->to($codeChange->user->email, $codeChange->user->name);
+                });
+            }
+        }
 
 
         $sells = Point::with(['product'])
@@ -160,7 +194,8 @@ class PointController extends Controller
 
     public function clientExchange($id)
     {
-        /*         $product = Product::find($id);
+        $product = Product::find($id);
+
         $client = User::where('id', Auth::user()->id)
             ->first();
         if ($client->total_points < $product->point) {
@@ -176,6 +211,6 @@ class PointController extends Controller
             ]);
         }
         toastr()->success('Servicio Canjeado Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);
-        return back(); */
+        return back();
     }
 }

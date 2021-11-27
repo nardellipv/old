@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\Sale;
+use Illuminate\Support\Facades\Request;
 
 class ProductController extends Controller
 {
@@ -50,6 +51,26 @@ class ProductController extends Controller
         ]);
 
         toastr()->success('Producto Creado Correctamente', 'Producto Creado', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function exchangeActiveProduct(Request $request, $id)
+    {
+        $exchange = Product::find($id);
+        $exchange->exchange = 'Y';
+        $exchange->save();
+
+        toastr()->success('Producto Modificado Correctamente', 'Producto Modificado', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);
+        return back();
+    }
+
+    public function exchangeDesactiveProduct(Request $request, $id)
+    {
+        $exchange = Product::find($id);
+        $exchange->exchange = 'N';
+        $exchange->save();
+
+        toastr()->success('Producto Modificado Correctamente', 'Producto Modificado', ["positionClass" => "toast-bottom-left", "timeOut"=> "3000", "progressBar" => "true"]);
         return back();
     }
 

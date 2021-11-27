@@ -6,6 +6,7 @@ use App\Notification;
 use App\Point;
 use App\Product;
 use App\Sale;
+use App\SenderMail;
 use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,8 @@ class DashboardController extends Controller
 
     public function clientDashboard()
     {
-        $products = Product::all();
+        $products = Product::where('exchange', 'Y')
+            ->get();
 
         $user = Auth::user();
 
@@ -90,12 +92,18 @@ class DashboardController extends Controller
                 'code' => $client->id . $code,
             ]);
 
+            $emailSend = SenderMail::where('id', 3)
+                ->first();
 
-            Mail::send('emails.sendCode', ['client' => $client, 'code' => $code, 'product' => $product], function ($msj) use ($client, $product, $code) {
-                $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
-                $msj->subject('Canje de puntos por productos o servicios');
-                $msj->to($client->email, $client->name);
-            });
+            if ($emailSend->active == 'Y') {
+                if ($client->email != NULL) {
+                    Mail::send('emails.sendCode', ['client' => $client, 'code' => $code, 'product' => $product], function ($msj) use ($client, $product, $code) {
+                        $msj->from('no-responder@oldbarberchair.com.ar', 'Old Barber Chair');
+                        $msj->subject('Canje de puntos por productos o servicios');
+                        $msj->to($client->email, $client->name);
+                    });
+                }
+            }
         }
 
         toastr()->success('Servicio Canjeado Correctamente', 'Servicio Canjeado', ["positionClass" => "toast-bottom-left", "timeOut" => "3000", "progressBar" => "true"]);

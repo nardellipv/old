@@ -34,7 +34,7 @@
                                                     <div class="form-group-inner">
                                                         <label>Email</label>
                                                         <input type="email" name="email" class="form-control"
-                                                            placeholder="Email" value="{{ old('email') }}" required />
+                                                            placeholder="Email" value="{{ old('email') }}" />
                                                     </div>
                                                     <div class="form-group-inner">
                                                         <label>Cumpleaños</label>

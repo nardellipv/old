@@ -113,8 +113,9 @@
                             <div class="form-group">
                                 <label class="control-label" for="email">Email</label>
                                 <input type="email" placeholder="Ingresar Email" title="email"
-                                    value="{{ old('email') }}" required autocomplete="email" autofocus name="email"
+                                    value="{{ old('email') }}" autocomplete="email" autofocus name="email"
                                     id="email" class="form-control  @error('email') is-invalid @enderror">
+
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

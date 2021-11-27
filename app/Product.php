@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'name', 'price', 'offer', 'point', 'point_changed'
+        'name', 'price', 'offer', 'point', 'point_changed', 'exchange'
     ];
 
     public function Point()
@@ -19,5 +19,4 @@ class Product extends Model
     {
         return $this->hasMany(Sale::class);
     }
-    
 }

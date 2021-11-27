@@ -39,6 +39,8 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::view('/admin/prductos/nuevo', 'admin.product.add')->name('product.add');
     Route::post('/admin/prductos/add', 'ProductController@storeProduct')->name('product.store');
     Route::get('/admin/prductos/{id}/delete', 'ProductController@deleteProduct')->name('product.delete');
+    Route::get('/admin/activar-canje/{id}', 'ProductController@exchangeActiveProduct')->name('productActive.exchange');
+    Route::get('/admin/desactivar-canje/{id}', 'ProductController@exchangeDesactiveProduct')->name('productDesactive.exchange');
 
     Route::get('/admin/producto/venta/{id}', 'ProductController@sellProduct')->name('product.sell');
 
@@ -50,9 +52,13 @@ Route::middleware(['auth','UserType'])->group(function () {
     Route::get('/admin/cliente/{id}/delete', 'ClientController@delete')->name('client.delete');
     Route::post('/admin/cliente/enviar-registracion', 'ClientController@sendRegisterMail')->name('client.sendRegisterMail');
 
+    Route::get('/admin/sendEmail', 'SenderMailController@index')->name('senderMail.index');
+    Route::get('/admin/sendEmail/{id}/active', 'SenderMailController@updateSenderMailActive')->name('senderMailActive.update');
+    Route::get('/admin/sendEmail/{id}/deactivate', 'SenderMailController@updateSenderMailDeactive')->name('senderMailDeactive.update');
+
     Route::get('/admin/servicio/{id}/agregar', 'ClientController@addService')->name('client.addService');
     Route::post('/admin/servicio/{id}/update', 'PointController@updateService')->name('client.updateService');
-    Route::get('/admin/servicio/{id}/canjear/{points}', 'PointController@exchenge')->name('client.exchenge');
+    Route::get('/admin/servicio/{id}/canjear/{points}/{product}', 'PointController@exchenge')->name('client.exchenge');
     Route::post('/admin/servicio/ver/ver-codigo', 'PointController@exchengeShowCode')->name('point.exchengeShowCode');
     Route::post('/admin/servicio/canjear-codigo/{code}', 'PointController@exchengeCode')->name('point.exchengeCode');
 
